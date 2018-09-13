@@ -13,7 +13,7 @@ index = 1
 #print(labels[index])
 
 images3Or7, labels3Or7 = [], []
-
+#select the 3s and 7s
 for i in range(1, len(labels)):
     if labels[i] == 3 or labels[i] == 7:
         images[i].append(1)
@@ -26,6 +26,7 @@ for i in range(1, len(labels)):
         labels3Or7.append(tempL)
 
 # all images are 784 pixels
+# Normalize images
 images3Or7Normalized=[]
 for im in images3Or7:
     tempIm = []
@@ -46,7 +47,7 @@ for im in images3Or7:
     else:
         break
 
-#initialize weights
+# Initialize weights
 weights = []
 
 for i in range(dim):
@@ -59,13 +60,14 @@ def sigmoid(x):
     return 1 / (1 + math.exp(-x))
 
 
+# Function that predicts the label of an image
 def calc_prop(image):
     res = 0
     for d in range(dim):
         res += weights[d] * image[d]
     return sigmoid(res)
 
-
+# Error function
 def calc_error():
     res = 0
     for n in range(1, N):
@@ -77,7 +79,7 @@ def calc_error():
     res = res / N
     return -res
 
-
+# Partial derivative of the error function
 def part_derivative(i):
     res = 0
     for n in range(1, N):
@@ -86,7 +88,7 @@ def part_derivative(i):
         res += (y_n - t_n)*currentlyUsedList[n][i]
     return res/N
 
-
+# Run iterations
 def run_iteration():
     for i in range(0, len(weights)-1):
         change = learning_rate * part_derivative(i)
