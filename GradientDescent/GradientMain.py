@@ -6,7 +6,7 @@ mndata = MNIST('samples')
 
 images, labels = mndata.load_training()
 
-learning_rate = 0.1
+learning_rate = 1
 
 index = 1
 #print(mndata.display(images[index]))
@@ -63,7 +63,7 @@ def calc_prop(image):
     res = 0
     for d in range(dim):
         res += weights[d] * image[d]
-    return sigmoid(res+weights[-1])
+    return sigmoid(res)
 
 
 def calc_error():
@@ -71,7 +71,9 @@ def calc_error():
     for n in range(1, N):
         t_n = labels3Or7[n]
         y_n = calc_prop(currentlyUsedList[n])
-        res += t_n * math.log1p(y_n) + (1-t_n)*math.log1p(1-y_n)
+        left_part = t_n * math.log(y_n)
+        right_part = ((1-t_n)*math.log(1-y_n+0.000000001))
+        res += left_part + right_part
     res = res / N
     return -res
 
