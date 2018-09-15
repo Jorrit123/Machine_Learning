@@ -1,3 +1,5 @@
+import sys
+
 from mnist import MNIST
 from numpy.random import random
 import math
@@ -34,23 +36,55 @@ for im in images3Or7:
         tempIm.append(p/255)
     images3Or7Normalized.append(tempIm)
 
-currentlyUsedList = images3Or7Normalized[1:50]
+
+#start cropping
+dim = len(images3Or7[0])
+
+usedPixels = []
+for i in range(0, dim):
+    usedPixels.append(0)
+
+
+for x in range(0, dim):
+    for im in images3Or7Normalized:
+        usedPixels[x] += im[x]
+
+
+usedDim = 0
+for p in usedPixels:
+    if p>0:
+        usedDim += 1
+
+croppedImages = []
+for im in images3Or7Normalized:
+    tempIm = []
+    for i in range(0, dim):
+        if usedPixels[i] > 0:
+            tempIm.append(im[i])
+    croppedImages.append(tempIm)
+
+#end cropping
+
+currentlyUsedList = croppedImages
 
 N = len(currentlyUsedList)
 
-sameLength = 1
-dim = len(images3Or7[0])
-for im in images3Or7:
-    if len(im) == dim and sameLength == 1:
-        sameLength = 1
-        dim = len(im)
-    else:
-        break
+#test same dimension
+# sameLength = 1
+# dim = len(images3Or7[0])
+# for im in images3Or7:
+#     if len(im) == dim and sameLength == 1:
+#         sameLength = 1
+#         dim = len(im)
+#     else:
+#         break
+
+
 
 # Initialize weights
 weights = []
 
-for i in range(dim):
+for i in range(len(currentlyUsedList[0])):
     weights.append(random())
 
 print(weights)
@@ -63,9 +97,18 @@ def sigmoid(x):
 # Function that predicts the label of an image
 def calc_prop(image):
     res = 0
-    for d in range(dim):
+    for d in range(len(image)):
         res += weights[d] * image[d]
     return sigmoid(res)
+
+
+props = []
+for x in range(N):
+    props.append(0)
+
+def calc_prop2(index):
+    return props[index]
+
 
 # Error function
 def calc_error():
@@ -74,7 +117,7 @@ def calc_error():
         t_n = labels3Or7[n]
         y_n = calc_prop(currentlyUsedList[n])
         left_part = t_n * math.log(y_n)
-        right_part = ((1-t_n)*math.log(1-y_n+0.000000001))
+        right_part = ((1-t_n)*math.log(1-y_n+sys.float_info.min))
         res += left_part + right_part
     res = res / N
     return -res
@@ -84,21 +127,24 @@ def part_derivative(i):
     res = 0
     for n in range(1, N):
         t_n = labels3Or7[n]
-        y_n = calc_prop(currentlyUsedList[n])
+        # y_n = calc_prop(currentlyUsedList[n])
+        y_n = calc_prop2(n)
         res += (y_n - t_n)*currentlyUsedList[n][i]
     return res/N
 
 # Run iterations
 def run_iteration():
-    for i in range(0, len(weights)-1):
+    for i in range(N):
+        props[i] = calc_prop(currentlyUsedList[i])
+    for i in range(0, len(weights)):
         change = learning_rate * part_derivative(i)
         weights[i] -= change
     print("updated - Error:")
     print(calc_error())
-    print(weights)
+    # print(weights)
 
 print("first error")
 print(calc_error())
-for x in range(0, 15):
+while True:
     run_iteration()
 
