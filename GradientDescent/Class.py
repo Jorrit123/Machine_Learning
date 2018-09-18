@@ -26,13 +26,16 @@ class Gradient_Descent():
         self.weights = np.random.normal(size=785)
         self.N = 12396
         self.probabilities = np.zeros(self.N)
+        self.learning_rate = 0.1
+        self.momentum_term = 0.1
 
     @staticmethod
     def sigmoid(x):
         return 1 / (1 + np.exp(-1*x))
 
     def calc_prop(self):
-        self.probabilities = np.array(list(map(self.sigmoid,(np.dot(self.data[:,:-1],self.weights)))))
+        mapping = np.vectorize(self.sigmoid)
+        self.probabilities = mapping(np.dot(self.data[:,:-1],self.weights))
 
     def calc_error(self):
         error = self.data[:,-1]*np.log(self.probabilities) + (1-self.data[:,-1])*np.log(1-self.probabilities)
@@ -44,12 +47,19 @@ class Gradient_Descent():
     def gradient(self):
         return np.dot((self.probabilities-self.data[:,-1]),data[:,:-1])
 
+    def update_weights(self):
+        gradients = self.gradient()
+        self.weights += -self.learning_rate*gradients
+
+    def momentum(self):
+        gradients = self.gradient()
+        self.weights += -self.learning_rate*gradients + self.momentum_term
+
+
     def iteration(self):
         print(self.mean_squares())
         self.calc_prop()
-        gradients = self.gradient()
-        self.weights = self.weights - gradients
-
+        self.update_weights()
 
 
 if __name__ == '__main__':
