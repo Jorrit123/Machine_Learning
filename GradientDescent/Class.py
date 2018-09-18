@@ -12,10 +12,10 @@ images = np.concatenate([images,bias[:,None]], axis=1)
 labels = np.array(labels)
 data = np.concatenate([images, labels[:,None]], axis=1)
 data = data[(data[:,-1] == 3) | (data[:,-1] == 7)]
-data[data[:,-1]==3]=0
-data[data[:,-1]==7]=1
+data[:,-1][data[:,-1]==3]=0
+data[:,-1][data[:,-1]==7]=1
 
-print(data.shape)
+print(np.unique(data))
 
 
 #labels = labels[labels == 3 or labels ==7]
@@ -23,7 +23,7 @@ print(data.shape)
 class Gradient_Descent():
     def __init__(self,data):
         self.data = data
-        self.weights = np.random.normal(size=785)
+        self.weights = np.random.normal(scale=0.1,size=785) #sigma = 0.1, so the argument of the sigmoid function does not too big
         self.N = 12396
         self.probabilities = np.zeros(self.N)
         self.learning_rate = 0.1
@@ -45,7 +45,8 @@ class Gradient_Descent():
         return np.sum((self.probabilities-data[:,-1])**2)
 
     def gradient(self):
-        return np.dot((self.probabilities-self.data[:,-1]),data[:,:-1])
+        a = np.dot((self.probabilities-self.data[:,-1]),data[:,:-1])
+        return 1/self.N*a
 
     def update_weights(self):
         gradients = self.gradient()
@@ -57,7 +58,7 @@ class Gradient_Descent():
 
 
     def iteration(self):
-        print(self.mean_squares())
+        print(self.calc_error())
         self.calc_prop()
         self.update_weights()
 
