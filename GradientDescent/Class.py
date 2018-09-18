@@ -32,23 +32,24 @@ class Gradient_Descent():
         return 1 / (1 + np.exp(-1*x))
 
     def calc_prop(self):
-        self.probabilities = np.array(list(map(self.sigmoid,([np.dot(self.data[:,:-1],self.weights)]))))
+        self.probabilities = np.array(list(map(self.sigmoid,(np.dot(self.data[:,:-1],self.weights)))))
 
     def calc_error(self):
         error = self.data[:,-1]*np.log(self.probabilities) + (1-self.data[:,-1])*np.log(1-self.probabilities)
         return -1/self.N*np.sum(error)
 
+    def mean_squares(self):
+        return np.sum((self.probabilities-data[:,-1])**2)
+
     def gradient(self):
-        gradients = []
-        for i in range(1,786):
-            gradients.append(np.sum((self.probabilities-self.data[:,-1])*self.data[:,i]))
-        return 1/self.N*np.array(gradients)
+        return np.dot((self.probabilities-self.data[:,-1]),data[:,:-1])
 
     def iteration(self):
+        print(self.mean_squares())
         self.calc_prop()
         gradients = self.gradient()
         self.weights = self.weights - gradients
-        print(self.calc_error())
+
 
 
 if __name__ == '__main__':
