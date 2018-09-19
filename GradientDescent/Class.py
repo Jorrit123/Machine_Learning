@@ -13,8 +13,6 @@ data = data[(data[:,-1] == 3) | (data[:,-1] == 7)]
 data[:,-1][data[:,-1]==3]=0
 data[:,-1][data[:,-1]==7]=1
 
-print(np.unique(data))
-
 
 #labels = labels[labels == 3 or labels ==7]
 
