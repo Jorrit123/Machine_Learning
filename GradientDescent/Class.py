@@ -24,7 +24,7 @@ class Gradient_Descent():
         self.N = 12396
         self.probabilities = np.zeros(self.N)
         self.learning_rate = 0.1
-        self.momentum_term = 0.1
+        self.momentum_term = 0.2
         self.weight_decay_rate = 0.1
         self.previous_gradients = np.zeros(self.pixels)
         self.gradients = np.zeros(self.pixels)
@@ -42,14 +42,14 @@ class Gradient_Descent():
 
     def calc_error(self):
         error = self.data[:,-1]*np.log(self.probabilities) + (1-self.data[:,-1])*np.log(1-self.probabilities)
-        #if self.decay:
-        #    error += (2/self.weight_decay_rate) * np.sum(np.square(self.weights))
-        return -1/self.N*np.sum(error)
+        if self.decay:
+            error += (self.weight_decay_rate/(2*self.N))*np.sum(self.weights)**2
+        return (-1/self.N)*np.sum(error)
 
     def gradient(self):
         gradients = 1/self.N*np.dot((self.probabilities-self.data[:,-1]),data[:,:-1])
         if self.decay:
-            gradients += (self.weight_decay_rate/5)*self.weights # ??
+            gradients += (self.weight_decay_rate/self.N)*self.weights
         return gradients
 
     def update_weights(self):
@@ -65,7 +65,7 @@ class Gradient_Descent():
         self.update_weights()
 
 if __name__ == '__main__':
-    Test = Gradient_Descent(data,True,False)
+    Test = Gradient_Descent(data,True,True)
     i = 0
     while True:
         for x in range(0,20):
