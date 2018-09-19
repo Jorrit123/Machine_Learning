@@ -19,15 +19,20 @@ print(np.unique(data))
 #labels = labels[labels == 3 or labels ==7]
 
 class Gradient_Descent():
-    def __init__(self,data):
+    def __init__(self,data,momentum,decay):
+        self.pixels = 785
         self.data = data
-        self.weights = np.random.normal(scale=0.1,size=785) #sigma = 0.1, so the argument of the sigmoid function does not too big
+        self.weights = np.random.normal(scale=0.1,size=self.pixels) #sigma = 0.1, so the argument of the sigmoid function does not too big
         self.N = 12396
         self.probabilities = np.zeros(self.N)
         self.learning_rate = 0.1
         self.momentum_term = 0.1
-        self.previous_gradients = np.zeros(785)
-        self.gradients = np.zeros(785)
+        self.weight_decay_rate = 0.1
+        self.previous_gradients = np.zeros(self.pixels)
+        self.gradients = np.zeros(self.pixels)
+        self.momentum = momentum
+        self.decay = decay
+
 
     @staticmethod
     def sigmoid(x):
@@ -39,34 +44,35 @@ class Gradient_Descent():
 
     def calc_error(self):
         error = self.data[:,-1]*np.log(self.probabilities) + (1-self.data[:,-1])*np.log(1-self.probabilities)
+        #if self.decay:
+        #    error += (2/self.weight_decay_rate) * np.sum(np.square(self.weights))
         return -1/self.N*np.sum(error)
 
     def gradient(self):
-        a = 1/self.N*np.dot((self.probabilities-self.data[:,-1]),data[:,:-1])
-        return a
+        gradients = 1/self.N*np.dot((self.probabilities-self.data[:,-1]),data[:,:-1])
+        if self.decay:
+            gradients += (self.weight_decay_rate/5)*self.weights # ??
+        return gradients
 
     def update_weights(self):
-        self.gradients = self.gradient()
-        self.weights += -self.learning_rate*self.gradients
+        if self.momentum:
+            self.previous_gradients = self.gradients
+            self.gradients = self.learning_rate * self.gradient() + self.momentum_term * self.previous_gradients
+        else:
+            self.gradients = self.learning_rate * self.gradient()
+        self.weights -= self.gradients
 
-    def update_with_momentum(self):
-        self.previous_gradients = self.gradients
-        self.gradients = self.gradient() + self.momentum_term*self.previous_gradients
-        self.weights += -self.learning_rate * self.gradients
-
-
-    def iteration(self):
-        print(self.calc_error())
+    def run_iteration(self):
         self.calc_prop()
-        #self.update_weights()
-        self.update_with_momentum()
-
+        self.update_weights()
 
 if __name__ == '__main__':
-    Test = Gradient_Descent(data)
+    Test = Gradient_Descent(data,True,False)
     i = 0
     while True:
-        Test.iteration()
-        i += 1
+        for x in range(0,20):
+            Test.run_iteration()
+            i += 1
         print(i)
+        print(Test.calc_error())
 
