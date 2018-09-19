@@ -1,8 +1,6 @@
-from mnist import MNIST
-from numpy.random import random
 import numpy as np
-
-
+from mnist import MNIST
+#import matplotlib as plt
 
 mndata = MNIST('samples')
 images, labels = mndata.load_training()
@@ -28,6 +26,8 @@ class Gradient_Descent():
         self.probabilities = np.zeros(self.N)
         self.learning_rate = 0.1
         self.momentum_term = 0.1
+        self.previous_gradients = np.zeros(785)
+        self.gradients = np.zeros(785)
 
     @staticmethod
     def sigmoid(x):
@@ -41,26 +41,25 @@ class Gradient_Descent():
         error = self.data[:,-1]*np.log(self.probabilities) + (1-self.data[:,-1])*np.log(1-self.probabilities)
         return -1/self.N*np.sum(error)
 
-    def mean_squares(self):
-        return np.sum((self.probabilities-data[:,-1])**2)
-
     def gradient(self):
-        a = np.dot((self.probabilities-self.data[:,-1]),data[:,:-1])
-        return 1/self.N*a
+        a = 1/self.N*np.dot((self.probabilities-self.data[:,-1]),data[:,:-1])
+        return a
 
     def update_weights(self):
-        gradients = self.gradient()
-        self.weights += -self.learning_rate*gradients
+        self.gradients = self.gradient()
+        self.weights += -self.learning_rate*self.gradients
 
-    def momentum(self):
-        gradients = self.gradient()
-        self.weights += -self.learning_rate*gradients + self.momentum_term
+    def update_with_momentum(self):
+        self.previous_gradients = self.gradients
+        self.gradients = self.gradient() + self.momentum_term*self.previous_gradients
+        self.weights += -self.learning_rate * self.gradients
 
 
     def iteration(self):
         print(self.calc_error())
         self.calc_prop()
-        self.update_weights()
+        #self.update_weights()
+        self.update_with_momentum()
 
 
 if __name__ == '__main__':
