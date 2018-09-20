@@ -17,7 +17,7 @@ data[:,-1][data[:,-1]==7]=1
 #labels = labels[labels == 3 or labels ==7]
 
 class Gradient_Descent():
-    def __init__(self,data,momentum,decay):
+    def __init__(self,data,momentum,decay,newton):
         self.pixels = 785
         self.data = data
         self.weights = np.random.normal(scale=0.1,size=self.pixels) #sigma = 0.1, so the argument of the sigmoid function does not too big
@@ -30,6 +30,8 @@ class Gradient_Descent():
         self.gradients = np.zeros(self.pixels)
         self.momentum = momentum
         self.decay = decay
+        self.newton = newton
+        self.hessians = np.zeros([self.pixels,self.pixels])
 
 
     @staticmethod
@@ -52,10 +54,18 @@ class Gradient_Descent():
             gradients += (self.weight_decay_rate/self.N)*self.weights
         return gradients
 
+    def hessian(self):
+        hessian = np.dot(np.multiply(self.probabilities*(1-self.probabilities),self.data[:,:-1].T),self.data[:,:-1])
+        return np.linalg.inv(1/self.N*hessian + np.identity(self.pixels)*(self.weight_decay_rate/self.N))
+
     def update_weights(self):
         if self.momentum:
             self.previous_gradients = self.gradients
             self.gradients = self.learning_rate * self.gradient() + self.momentum_term * self.previous_gradients
+        elif self.newton:
+            self.previous_gradients = self.gradients
+            self.gradients = self.gradient()
+            self.hessians = np.dot(self.hessian(),self.previous_gradients)
         else:
             self.gradients = self.learning_rate * self.gradient()
         self.weights -= self.gradients
@@ -65,7 +75,7 @@ class Gradient_Descent():
         self.update_weights()
 
 if __name__ == '__main__':
-    Test = Gradient_Descent(data,True,True)
+    Test = Gradient_Descent(data,False,False,True)
     i = 0
     while True:
         for x in range(0,20):
