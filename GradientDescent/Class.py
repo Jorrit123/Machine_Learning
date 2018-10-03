@@ -159,21 +159,28 @@ train = []
 test = []
 iterations = []
 if __name__ == '__main__':
-    Test = Gradient_Descent(data,test_data,True,True,False,False,False,0)
+    Test = Gradient_Descent(data,test_data,False,False,False,False,False,0)
     i = 0
     # Test.run_iteration()
     # print(Test.line_search_error(0.1))
 
-    for i in range(2000):
-        for x in range(0,100):
-            Test.run_iteration()
-            i += 1
-        print(i)
-        print("Train class error, Test Class errrow")
-        print(Test.calc_classification_error(False))
-        print(Test.calc_classification_error(True))
-        print("Train loss, test loss")
-        train.append(Test.calc_error_for_eval(False))
-        test.append(Test.calc_error_for_eval(True))
-        iterations.append(i)
+    for i in range(3000):
+        Test.run_iteration()
+        if i%30 == 0 and i > 1:
+            print(i)
+            print("Train class error, Test Class errrow")
+            print(Test.calc_classification_error(False))
+            print(Test.calc_classification_error(True))
+            print("Train loss, test loss")
+            train.append(Test.calc_error_for_eval(False))
+            test.append(Test.calc_error_for_eval(True))
+            iterations.append(i)
 
+fig = plt.figure()
+ax1 = fig.add_subplot(111)
+
+ax1.plot(iterations, train, color='black', label='Training Error')
+ax1.plot(iterations, test, color='green', label='Test Error')
+
+plt.legend()
+plt.show()
