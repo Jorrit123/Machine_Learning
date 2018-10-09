@@ -3,7 +3,7 @@ import sys
 import numpy as np
 from mnist import MNIST
 from scipy.optimize import minimize
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 
 mndata = MNIST('samples')
 images, labels = mndata.load_training()
