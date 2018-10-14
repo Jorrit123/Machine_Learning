@@ -166,12 +166,13 @@ if __name__ == '__main__':
 
     for i in range(3000):
         Test.run_iteration()
-        if i%30 == 0 and i > 1:
+        if i%100 == 0 and i > 1:
             print(i)
-            print("Train class error, Test Class errrow")
+            print("Train class error, Test Class errror")
             print(Test.calc_classification_error(False))
             print(Test.calc_classification_error(True))
             print("Train loss, test loss")
+            print(Test.calc_error_for_eval(False))
             train.append(Test.calc_error_for_eval(False))
             test.append(Test.calc_error_for_eval(True))
             iterations.append(i)

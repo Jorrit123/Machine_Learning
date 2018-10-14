@@ -22,7 +22,7 @@ labels_matrix= []
 #         temp.append(0)
 #     temp[l]=1
 #     labels_matrix.append(temp)
-for l in labels:
+for l in train_labels:
     temp = [1,0] if l == 3 else [0,1]
     labels_matrix.append(temp)
 
@@ -61,13 +61,13 @@ class Layer():
 
     def set_next_layer(self, layer):
         self.next_layer = layer
-        self.weights = np.random.normal(scale=0.01,size=(self.size,self.next_layer.size))
+        self.weights = np.random.normal(size=(self.size,self.next_layer.size))
 
     def is_last_layer(self):
         return self.is_outputlayer
 
     def calculate_values_next_layer(self):
-        temp_values = np.dot(self.a_values,self.weights)
+        temp_values = np.dot(self.z_values,self.weights)
         return temp_values
 
     def set_values(self,values):
@@ -105,18 +105,16 @@ class Layer():
         if self.is_last_layer():
             self.deltas = self.avg_errors*self.avg_z_values*(1-self.avg_z_values)
         else:
-            self.deltas = (np.dot(self.weights, self.next_layer.deltas))*(self.avg_a_values*(1-self.avg_a_values))
+            self.deltas = (np.dot(self.weights, self.next_layer.deltas))*(self.avg_z_values*(1-self.avg_z_values))
 
         if self.previous_layer is not None:
             self.previous_layer.calculate_deltas()
 
     def update_weights(self):
-        #if self.size == 3:
-            #print(self.weights)
-        if not self.is_last_layer():
+         if not self.is_last_layer():
             gradients = np.outer(self.avg_z_values,self.next_layer.deltas)
             self.weights -= self.lr*gradients
-        if self.previous_layer is not None:
+         if self.previous_layer is not None:
             self.previous_layer.update_weights()
 
 
@@ -142,7 +140,7 @@ class Network():
         self.train_labels = train_labels
         self.batch_size = batch_size
         self.batch_indices = np.arange(batch_size)
-        self.lr = 1
+        self.lr = 0.1
 
         self.old_corect = []
         #input layer
@@ -173,7 +171,9 @@ class Network():
             self.layers[0].set_values(train_data[index, :])
             predicitions.append(self.layers[0].forward_pass())
         errors = predicitions - self.batch_labels
+        #print(self.batch_labels)
         avg_errors = np.sum(errors,axis=0)/self.batch_size
+        #print(avg_errors)
         self.layers[-1].set_avg_errors(avg_errors)
 
     def back_propagate(self):
@@ -185,7 +185,7 @@ class Network():
         correct_predictions = 0
         for i in range(self.train_data[:,1].size):
             self.layers[0].set_values(train_data[i, :])
-            temp_prediction =self.layers[0].forward_pass()
+            temp_prediction = self.layers[0].forward_pass()
             temp = temp_prediction.copy()
             temp_prediction[np.where(temp_prediction == np.max(temp_prediction))] = 1
             temp_prediction[np.where(temp_prediction != np.max(temp_prediction))] = 0
@@ -201,8 +201,8 @@ class Network():
         print(correct_predictions/self.train_data[:,1].size)
 
 if __name__ == '__main__':
-    Network = Network([5,5], train_data, labels_matrix,2)
-    for i in range(1000):
+    Network = Network([50,30], train_data, labels_matrix,1)
+    for i in range(10000):
         if i%100 == 0:
             Network.calculate_error()
         Network.feed_forward()
