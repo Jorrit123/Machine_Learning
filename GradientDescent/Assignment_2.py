@@ -1,8 +1,10 @@
 import numpy as np
 from mnist import MNIST
-from scipy.optimize import minimize
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 
+
+
+#PREPOCESS TRAIN
 mndata = MNIST('samples')
 images, labels = mndata.load_training()
 images = np.array(images)/255
@@ -27,15 +29,31 @@ for l in train_labels:
     labels_matrix.append(temp)
 
 labels_matrix = np.array(labels_matrix)
-# test_images, test_labels = mndata.load_testing()
-# test_images = np.array(test_images)/255
-# test_bias = np.ones(test_images[:,0].shape)
-# test_images = np.concatenate([test_images,test_bias[:,None]], axis=1)
-# test_labels = np.array(test_labels)
-# test_data = np.concatenate([test_images, test_labels[:,None]], axis=1)
-# test_data = test_data[(test_data[:,-1] == 3) | (test_data[:,-1] == 7)]
-# test_data[:,-1][test_data[:,-1]==3]=[1,0]
-# test_data[:,-1][test_data[:,-1]==7]=[0,1]
+
+#PREPROCESS TEST
+images, labels = mndata.load_testing()
+images = np.array(images)/255
+bias = np.ones(images[:,0].shape)
+images = np.concatenate([images,bias[:,None]], axis=1)
+labels = np.array(labels)
+test_data = np.concatenate([images, labels[:, None]], axis=1)
+test_data = test_data[(test_data[:, -1] == 3) | (test_data[:, -1] == 7)]
+
+test_labels = test_data[:, -1]
+test_data = test_data[:, :-1]
+labels_matrix_test= []
+
+# for l in labels:
+#     temp = []
+#     for  i in range(10):
+#         temp.append(0)
+#     temp[l]=1
+#     labels_matrix.append(temp)
+for l in test_labels:
+    temp = [1,0] if l == 3 else [0,1]
+    labels_matrix_test.append(temp)
+
+test_labels = np.array(labels_matrix_test)
 
 
 
@@ -54,7 +72,7 @@ class Layer():
         self.network = network
         self.avg_a_values = np.zeros(self.size)
         self.avg_z_values = np.zeros(self.size)
-        self.avg_errors = np.zeros(self.size)
+        self.errors = np.zeros((self.network.batch_size,self.size))
 
     def set_previous_layer(self,layer):
         self.previous_layer = layer
@@ -77,8 +95,8 @@ class Layer():
         self.avg_a_values += self.a_values/self.network.batch_size
         self.avg_z_values += self.z_values/self.network.batch_size
 
-    def set_avg_errors(self,errors):
-        self.avg_errors = errors
+    def set_errors(self,errors):
+        self.errors = errors
 
 
     @staticmethod
@@ -103,7 +121,8 @@ class Layer():
 
     def calculate_deltas(self):
         if self.is_last_layer():
-            self.deltas = self.avg_errors*self.avg_z_values*(1-self.avg_z_values)
+            deltas = np.dot(self.errors,(self.avg_z_values*(1-self.avg_z_values)[:,None]))
+            self.deltas = np.sum(deltas,axis=0)/self.network.batch_size
         else:
             self.deltas = (np.dot(self.weights, self.next_layer.deltas))*(self.avg_z_values*(1-self.avg_z_values))
 
@@ -134,10 +153,12 @@ class Layer():
 
 
 class Network():
-    def __init__(self,sizes,train_data,train_labels,batch_size):
+    def __init__(self,sizes,train_data,train_labels,test_data,test_labels,batch_size):
         self.layers = []
         self.train_data = train_data
         self.train_labels = train_labels
+        self.test_data = test_data
+        self.test_labels = test_labels
         self.batch_size = batch_size
         self.batch_indices = np.arange(batch_size)
         self.lr = 0.1
@@ -158,7 +179,7 @@ class Network():
         for i in range(1,len(self.layers)):
             self.layers[i].set_previous_layer(self.layers[i-1])
 
-    def create_batch(self):
+    def create_batch(self,test=False):
         self.batch_indices = np.random.randint(0,self.train_data[:,0].size, size = self.batch_size)
         self.batch = self.train_data[self.batch_indices,:]
         self.batch_labels = self.train_labels[self.batch_indices,:]
@@ -171,40 +192,59 @@ class Network():
             self.layers[0].set_values(train_data[index, :])
             predicitions.append(self.layers[0].forward_pass())
         errors = predicitions - self.batch_labels
-        #print(self.batch_labels)
-        avg_errors = np.sum(errors,axis=0)/self.batch_size
-        #print(avg_errors)
-        self.layers[-1].set_avg_errors(avg_errors)
+        self.layers[-1].set_errors(errors)
 
     def back_propagate(self):
         self.layers[-1].back_propagate()
 
-
-    def calculate_error(self):
+    def calculate_error(self,test=False):
         correct_indices = []
         correct_predictions = 0
-        for i in range(self.train_data[:,1].size):
-            self.layers[0].set_values(train_data[i, :])
+        if test:
+            data = self.test_data
+            labels = self.test_labels
+        else:
+            data = self.train_data
+            labels = self.train_labels
+
+        for i in range(data[:,0].size):
+            self.layers[0].set_values(data[i, :])
             temp_prediction = self.layers[0].forward_pass()
             temp = temp_prediction.copy()
             temp_prediction[np.where(temp_prediction == np.max(temp_prediction))] = 1
             temp_prediction[np.where(temp_prediction != np.max(temp_prediction))] = 0
 
-            if np.array_equal(temp_prediction,self.train_labels[i]):
+            if np.array_equal(temp_prediction,labels[i]):
                 correct_predictions += 1*np.max(temp_prediction)
                 correct_indices.append(i)
+        return 1 - correct_predictions/data[:,1].size
 
-        #print(correct_predictions)
 
-        #print ((set(self.old_corect) - set(correct_indices)))
-        #self.old_corect = correct_indices
-        print(correct_predictions/self.train_data[:,1].size)
+train = []
+test = []
+iterations = []
 
 if __name__ == '__main__':
-    Network = Network([50,30], train_data, labels_matrix,1)
-    for i in range(10000):
+    Network = Network([10,10], train_data, labels_matrix, test_data, test_labels,1)
+    for i in range(2000):
         if i%100 == 0:
-            Network.calculate_error()
+            print(i)
+            print("train_error")
+            print(Network.calculate_error())
+            print("test_error")
+            print(Network.calculate_error(True))
+            print("#######################################")
+            train.append(Network.calculate_error())
+            test.append(Network.calculate_error(True))
+            iterations.append(i)
         Network.feed_forward()
         Network.back_propagate()
 
+fig = plt.figure()
+ax1 = fig.add_subplot(111)
+
+ax1.plot(iterations, train, color='black', label='Training Error')
+ax1.plot(iterations, test, color='green', label='Test Error')
+
+plt.legend()
+plt.show()
