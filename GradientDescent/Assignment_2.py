@@ -9,6 +9,7 @@ mndata = MNIST('samples')
 images, labels = mndata.load_training()
 images = np.array(images)/255
 bias = np.ones(images[:,0].shape)
+print(images.shape,bias.shape)
 images = np.concatenate([images,bias[:,None]], axis=1)
 labels = np.array(labels)
 train_data = np.concatenate([images, labels[:, None]], axis=1)
