@@ -3,7 +3,7 @@ import sys
 import numpy as np
 from mnist import MNIST
 from scipy.optimize import minimize
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 
 mndata = MNIST('samples')
 images, labels = mndata.load_training()
@@ -42,7 +42,7 @@ class Gradient_Descent():
         self.batch_size = self.data[:, 1].size
         self.batch_size = batch_size if batch_size != 0 else self.batch_size
         self.probabilities = np.zeros(self.batch_size)
-        self.learning_rate = 1
+        self.learning_rate = 0.1
         self.momentum_term = 0.2
         self.weight_decay_rate = 0.1
         self.previous_gradients = np.ones(self.pixels)
@@ -164,7 +164,7 @@ if __name__ == '__main__':
     # Test.run_iteration()
     # print(Test.line_search_error(0.1))
 
-    for i in range(3000):
+    for i in range(30000):
         Test.run_iteration()
         if i%100 == 0 and i > 1:
             print(i)

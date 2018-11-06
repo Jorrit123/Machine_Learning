@@ -14,17 +14,18 @@ test_labels = np.loadtxt('lasso_data\data1_output_val')
 
 
 class Lasso():
-    def __init__(self,train_data,train_labels,test_data,test_labels,gamma):
+    def __init__(self,train_data,train_labels,test_data,test_labels,lam,alpha):
         self.train_data = train_data
         self.train_labels = train_labels
         self.test_data = test_data
         self.test_labels = test_labels
-        self.gamma = gamma
+        self.gamma = lam * alpha
+        self.lam = lam
+        self.alpha = alpha
         self.N = train_data[:,0].size
         self.d = train_data[0,:].size
         self.chi = np.zeros((self.N,self.N))
         self.weights = np.random.normal(size=self.d)
-        self.weights = np.zeros(self.d)
         self.b = np.random.normal(size=self.d)
         self.predictions = np.zeros(self.N)
 
@@ -45,7 +46,8 @@ class Lasso():
         predictions_minus_j = self.predict()-temp
         predict_temp = self.train_labels - predictions_minus_j
         z = (1/self.N)*np.sum(train_data[:,j]*predict_temp)
-        self.weights[j] = self.soft_thresholding_operator(z,self.gamma)
+        threshold = self.soft_thresholding_operator(z,self.gamma)
+        self.weights[j] = threshold/(1+self.lam*(1-self.alpha))
 
     @staticmethod
     def soft_thresholding_operator(z,y):
@@ -67,7 +69,7 @@ class Lasso():
 
 
 if __name__ == '__main__':
-    Lasso = Lasso(train_data,train_labels,test_data,test_labels,1)
+    Lasso = Lasso(train_data,train_labels,test_data,test_labels,0.4,0.01)
     for i in range(200):
         Lasso.iteration()
         print(Lasso.error())
