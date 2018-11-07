@@ -35,13 +35,15 @@ class Boltzmann_machine():
         for i in range(500):
             n = np.random.choice(range(self.N))
             h = np.dot(self.weights[n,:],self.states) - self.weights[n,n]*self.states[n]
-            probability = (self.sigmoid(-self.states[n]*(h + self.thetas[n])))
+            probability = self.sigmoid(-self.states[n]*(h + self.thetas[n]))
             if probability > np.random.uniform(0,1):
                 self.states[n] = -self.states[n]
             states += self.states
             correlation += np.outer(self.states,self.states)
 
         self.means = states/500
+        print(self.means)
+        print(self.clamped_means)
         self.correlations = correlation/500
 
     def update_weights(self):

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bf7dbca3-16c7-4fbe-84ca-66e4ade73125" name="Default" comment="" />
+    <list default="true" id="bf7dbca3-16c7-4fbe-84ca-66e4ade73125" name="Default" comment="Lasso">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GradientDescent/Boltzmann.py" beforeDir="false" afterPath="$PROJECT_DIR$/GradientDescent/Boltzmann.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,8 +17,8 @@
       <file leaf-file-name="Assignment_2.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GradientDescent/Assignment_2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="14" column="62" selection-start-line="14" selection-start-column="62" selection-end-line="14" selection-end-column="62" />
+            <state relative-caret-position="4216">
+              <caret line="250" column="10" selection-start-line="243" selection-end-line="250" selection-end-column="10" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -23,11 +26,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Assignment_3.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Assignment_3.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GradientDescent/Assignment_3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="652">
-              <caret line="69" column="65" selection-start-line="69" selection-start-column="65" selection-end-line="69" selection-end-column="65" />
+            <state relative-caret-position="1190">
+              <caret line="70" selection-start-line="70" selection-end-line="70" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Boltzmann.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/GradientDescent/Boltzmann.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="612">
+              <caret line="45" column="33" lean-forward="true" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="33" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -76,6 +91,7 @@
       <find>clea</find>
       <find>plt</find>
       <find>prin</find>
+      <find>sigmoid</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -90,6 +106,7 @@
         <option value="$PROJECT_DIR$/GradientDescent/Assignment_1.py" />
         <option value="$PROJECT_DIR$/GradientDescent/Assignment_2.py" />
         <option value="$PROJECT_DIR$/GradientDescent/Assignment_3.py" />
+        <option value="$PROJECT_DIR$/GradientDescent/Boltzmann.py" />
       </list>
     </option>
   </component>
@@ -102,7 +119,25 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Machine_Learning" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Machine_Learning" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Machine_Learning" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Machine_Learning" type="462c0819:PsiDirectoryNode" />
+              <item name="GradientDescent" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -120,7 +155,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Assignment_3">
+  <component name="RunManager" selected="Python.Boltzmann">
     <configuration name="Assignment_1" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Machine_Learning" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -175,6 +210,24 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="Boltzmann" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Machine_Learning" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/GradientDescent" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GradientDescent/Boltzmann.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="Class" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Machine_Learning" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -193,38 +246,20 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="GradientMain" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Machine_Learning" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/GradientDescent" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\Jorrit\Documents\Uni\Machine_Learning\GradientDescent\Assignment_2.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
     <list>
-      <item itemvalue="Python.GradientMain" />
       <item itemvalue="Python.Class" />
       <item itemvalue="Python.Assignment_2" />
       <item itemvalue="Python.Assignment_1" />
       <item itemvalue="Python.Assignment_3" />
+      <item itemvalue="Python.Boltzmann" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Boltzmann" />
         <item itemvalue="Python.Assignment_3" />
         <item itemvalue="Python.Assignment_2" />
         <item itemvalue="Python.Assignment_1" />
         <item itemvalue="Python.Class" />
-        <item itemvalue="Python.GradientMain" />
       </list>
     </recent_temporary>
   </component>
@@ -365,19 +400,26 @@
       <option name="project" value="LOCAL" />
       <updated>1540216960077</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Boltzman Machine">
+      <created>1541517949055</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1541517949055</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.1406744" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1406744" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.33116883" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32900432" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.36580086" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.36580086" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32792208" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -427,19 +469,20 @@
     <MESSAGE value="Multi-Layer works kindof" />
     <MESSAGE value="wat" />
     <MESSAGE value="Lasso" />
-    <option name="LAST_COMMIT_MESSAGE" value="Lasso" />
+    <MESSAGE value="Boltzman Machine" />
+    <option name="LAST_COMMIT_MESSAGE" value="Boltzman Machine" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/GradientDescent/Assignment_3.py</url>
-          <line>52</line>
+          <line>54</line>
           <option name="timeStamp" value="104" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/GradientDescent/Assignment_3.py</url>
-          <line>44</line>
+          <line>45</line>
           <option name="timeStamp" value="105" />
         </line-breakpoint>
       </breakpoints>
@@ -450,7 +493,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="106" />
+      <option name="time" value="108" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
@@ -473,13 +516,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/GradientDescent/Assignment_2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2448">
-          <caret line="148" column="19" selection-start-line="148" selection-start-column="19" selection-end-line="148" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/GradientDescent/Assignment_1.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1819">
@@ -778,8 +814,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GradientDescent/Assignment_2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="14" column="62" selection-start-line="14" selection-start-column="62" selection-end-line="14" selection-end-column="62" />
+        <state relative-caret-position="4216">
+          <caret line="250" column="10" selection-start-line="243" selection-end-line="250" selection-end-column="10" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
@@ -788,8 +824,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GradientDescent/Assignment_3.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="652">
-          <caret line="69" column="65" selection-start-line="69" selection-start-column="65" selection-end-line="69" selection-end-column="65" />
+        <state relative-caret-position="1190">
+          <caret line="70" selection-start-line="70" selection-end-line="70" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GradientDescent/Boltzmann.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="45" column="33" lean-forward="true" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
