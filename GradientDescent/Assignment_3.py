@@ -45,7 +45,7 @@ class Lasso():
         temp =self.weights[j]*self.train_data[:,j]
         predictions_minus_j = self.predict()-temp
         predict_temp = self.train_labels - predictions_minus_j
-        z = (1/self.N)*np.sum(train_data[:,j]*predict_temp)
+        z = (1/self.N)*np.sum(self.train_data[:,j]*predict_temp)
         threshold = self.soft_thresholding_operator(z,self.gamma)
         self.weights[j] = threshold/(1+self.lam*(1-self.alpha))
 
@@ -65,14 +65,37 @@ class Lasso():
     def error(self):
         return np.sum((self.predict()-self.train_labels)**2)
 
+    def cross_validate(self,k):
+        total_error = 0
 
+        data_splits = []
+        label_splits = []
+        size = int(self.N / k)
+        for i in range(k):
+            start = i*size
+            data_splits.append(self.train_data[start:start+size,:])
+            label_splits.append(self.train_labels[start:start+size])
 
+        for i in range(k):
+            self.weights = np.random.normal(size=self.d)
+            self.train_data = [x for j,x in enumerate(data_splits) if j!=i]
+            self.train_data = np.concatenate(self.train_data)
+            self.train_labels = [x for j, x in enumerate(label_splits) if j != i]
+            self.train_labels = np.concatenate(self.train_labels)
+            for k in range(20):
+                self.iteration()
+            self.train_data = data_splits[i]
+            self.train_labels = label_splits[i]
+            total_error += self.error()
+
+        return total_error
 
 if __name__ == '__main__':
-    Lasso = Lasso(train_data,train_labels,test_data,test_labels,0.4,0.01)
-    for i in range(200):
-        Lasso.iteration()
-        print(Lasso.error())
-        # print(Lasso.weights)
+    Lasso = Lasso(train_data,train_labels,test_data,test_labels,0.3,0.3)
+    print(Lasso.cross_validate(5))
+    # for i in range(200):
+    #     Lasso.iteration()
+    #     print(Lasso.error())
+    #     # print(Lasso.weights)
 
 
