@@ -33,7 +33,7 @@ class Boltzmann_machine():
         self.weights = np.random.normal(size=(N,N))
         self.thetas = np.random.normal(size = N)
 
-        self.clamped_means = np.sum(self.Data, axis=0)*1/P
+        self.clamped_means = np.sum(self.Data, axis=0)/P
 
         self.clamped_correlations = np.dot(Data.T,Data)/P
         #self.clamped_correlations = (np.dot(Data.T,Data)-np.diag(1/(1-self.clamped_means**2))*1/P)
@@ -61,6 +61,7 @@ class Boltzmann_machine():
 
     def mean_field(self):
         C = self.clamped_correlations - np.outer(self.clamped_means,self.clamped_means)
+        test = np.outer(self.clamped_means,self.clamped_means)
         self.weights = -np.linalg.inv(C)+np.diag(1/(1-self.clamped_means**2))
         self.thetas = np.arctanh(self.clamped_means) - np.dot(self.weights,self.clamped_means)
 
