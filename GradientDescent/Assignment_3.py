@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 train_data = np.loadtxt('lasso_data\data1_input_train').T
@@ -11,7 +12,22 @@ bias = np.zeros(test_data[:,0].size)
 test_data = np.concatenate([test_data,bias[:,None]], axis=1)
 test_labels = np.loadtxt('lasso_data\data1_output_val')
 
+np.random.seed(1)
 
+
+#Generating corrolated date
+n = 3
+p = 1000 # train data size
+w = [2, 3, 0] # example 1a
+# w = [-2, 3, 0] # example 1b
+sigma = 1
+x=np.zeros((3,p))
+x[:2,:]=np.random.normal(0,1,(2,p))
+x[2,:]=2 / 3 * x[1,:]+2 / 3 * x[2,:]+1 / 3 * np.random.normal(size=p);
+y = np.dot(w,x) + np.random.normal(size=p);
+
+
+#The lasso class
 
 class Lasso():
     def __init__(self,train_data,train_labels,test_data,test_labels,lam,alpha):
@@ -36,6 +52,9 @@ class Lasso():
     #
     # def calculate_weights(self):
     #     self.weights = np.dot(self.b-self.gamma,np.linalg.inv(self.chi))
+
+    def set_alpha(self,value):
+        self.alpha = value
 
     def predict(self):
         self.predictions = np.dot(self.train_data, self.weights)
@@ -91,11 +110,28 @@ class Lasso():
         return total_error
 
 if __name__ == '__main__':
-    Lasso = Lasso(train_data,train_labels,test_data,test_labels,0.3,0.3)
-    print(Lasso.cross_validate(5))
+    # Lasso = Lasso(train_data,train_labels,test_data,test_labels,0.3,0.3)
+    # print(Lasso.cross_validate(5))
     # for i in range(200):
     #     Lasso.iteration()
     #     print(Lasso.error())
     #     # print(Lasso.weights)
 
 
+    gamma = []
+    errors = []
+    gamma_values = np.arange(0.15,0.6,0.05)
+    for g in gamma_values:
+        LassoStep = Lasso(train_data, train_labels, test_data, test_labels, g, g)
+        gamma.append(g)
+        error = LassoStep.cross_validate(5)
+        errors.append(error)
+        print(g, ": ", error)
+
+    fig = plt.figure()
+    ax1 = fig.add_subplot(111)
+
+    ax1.plot(gamma, errors, color='black', label='gamma')
+
+    plt.legend()
+    plt.show()
