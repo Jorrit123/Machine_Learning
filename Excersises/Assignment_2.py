@@ -2,7 +2,9 @@ import numpy as np
 from mnist import MNIST
 import matplotlib.pyplot as plt
 
-
+# full = True -> all data
+# full = False -> 3's and 7's
+full = True
 
 #PREPOCESSING TRAIN DATA
 mndata = MNIST('samples')
@@ -12,28 +14,32 @@ bias = np.ones(images[:,0].shape)
 print(images.shape,bias.shape)
 images = np.concatenate([images,bias[:,None]], axis=1)
 labels = np.array(labels)
-train_data = np.concatenate([images, labels[:, None]], axis=1)
-train_data = train_data[(train_data[:, -1] == 3) | (train_data[:, -1] == 7)]
 
-train_labels = train_data[:, -1]
-train_data = train_data[:, :-1]
+
 labels_matrix= []
+if full:
+    for l in labels:
+        temp = np.zeros(10)
+        temp[l]=1
+        labels_matrix.append(temp)
+    train_data = images
 
-# for l in labels:
-#     temp = []
-#     for  i in range(10):
-#         temp.append(0)
-#     temp[l]=1
-#     labels_matrix.append(temp)
+
+else:
+    train_data = np.concatenate([images, labels[:, None]], axis=1)
+    train_data = train_data[(train_data[:, -1] == 3) | (train_data[:, -1] == 7)]
+
+    train_labels = train_data[:, -1]
+    train_data = train_data[:, :-1]
 
 
-for l in train_labels:
-    temp = [1,0] if l == 3 else [0,1]
-    labels_matrix.append(temp)
+
+    for l in train_labels:
+        temp = [1,0] if l == 3 else [0,1]
+        labels_matrix.append(temp)
 
 labels_matrix = np.array(labels_matrix)
 
-print(labels_matrix)
 
 #PREPROCESSING TEST
 images, labels = mndata.load_testing()
@@ -41,22 +47,27 @@ images = np.array(images)/255
 bias = np.ones(images[:,0].shape)
 images = np.concatenate([images,bias[:,None]], axis=1)
 labels = np.array(labels)
-test_data = np.concatenate([images, labels[:, None]], axis=1)
-test_data = test_data[(test_data[:, -1] == 3) | (test_data[:, -1] == 7)]
 
-test_labels = test_data[:, -1]
-test_data = test_data[:, :-1]
-labels_matrix_test= []
+labels_matrix_test = []
+if full:
+    for l in labels:
+        temp = np.zeros(10)
+        temp[l]=1
+        labels_matrix_test.append(temp)
+    test_data = images
 
-# for l in labels:
-#     temp = []
-#     for  i in range(10):
-#         temp.append(0)
-#     temp[l]=1
-#     labels_matrix.append(temp)
-for l in test_labels:
-    temp = [1,0] if l == 3 else [0,1]
-    labels_matrix_test.append(temp)
+else:
+    test_data = np.concatenate([images, labels[:, None]], axis=1)
+    test_data = test_data[(test_data[:, -1] == 3) | (test_data[:, -1] == 7)]
+
+    test_labels = test_data[:, -1]
+    test_data = test_data[:, :-1]
+    labels_matrix_test= []
+
+
+    for l in test_labels:
+        temp = [1,0] if l == 3 else [0,1]
+        labels_matrix_test.append(temp)
 
 test_labels = np.array(labels_matrix_test)
 
@@ -175,7 +186,7 @@ class Network():
         for s in sizes:
             self.layers.append(Layer(s,network=self))
         #output layer ( 3 and 7)
-        self.layers.append(Layer(2,network=self,is_outputlayer=True))
+        self.layers.append(Layer(10 if full else 2,network=self,is_outputlayer=True))
 
         #set next layer
         for i in range(len(self.layers)-1):
@@ -231,8 +242,8 @@ test = []
 iterations = []
 
 if __name__ == '__main__':
-    Network = Network([100], train_data, labels_matrix, test_data, test_labels,10)
-    for i in range(1000):
+    Network = Network([500,100,90], train_data[:1000], labels_matrix[:1000], test_data[:200], test_labels[:200],10)
+    for i in range(40000):
         if i%100 == 0:
             print(i)
             print("train_error")
