@@ -99,7 +99,8 @@ class Layer():
         self.avg_z_values += self.z_values/self.network.batch_size
 
     def set_errors(self,errors):
-        self.errors = errors
+        self.errors = np.sum(errors, axis=0) / self.network.batch_size
+        # self.errors = errors
 
     @staticmethod
     def activation_function(x,function):
@@ -123,8 +124,9 @@ class Layer():
 
     def calculate_deltas(self):
         if self.is_last_layer():
-            deltas = np.dot(self.errors,(self.avg_z_values*(1-self.avg_z_values)[:,None]))
-            self.deltas = np.sum(deltas,axis=0)/self.network.batch_size
+            # deltas = np.dot(self.errors,(self.avg_z_values*(1-self.avg_z_values)[:,None]))
+            # self.deltas = np.sum(deltas,axis=0)/self.network.batch_size
+            self.deltas = self.errors*(self.avg_z_values*(1-self.avg_z_values))
         else:
             self.deltas = (np.dot(self.weights, self.next_layer.deltas))*(self.avg_z_values*(1-self.avg_z_values))
 
@@ -229,7 +231,7 @@ test = []
 iterations = []
 
 if __name__ == '__main__':
-    Network = Network([100], train_data, labels_matrix, test_data, test_labels,1)
+    Network = Network([100], train_data, labels_matrix, test_data, test_labels,10)
     for i in range(1000):
         if i%100 == 0:
             print(i)
