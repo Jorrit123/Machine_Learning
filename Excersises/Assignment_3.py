@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 
 
 train_data = np.loadtxt('lasso_data\data1_input_train').T
-train_data = train_data[:,1:]
-bias = np.zeros(train_data[:,0].size)
+train_data = train_data
+bias = np.ones(train_data[:,0].size)
 
 train_data = np.concatenate([train_data,bias[:,None]],axis=1)
 train_labels = np.loadtxt('lasso_data\data1_output_train')
@@ -13,7 +13,7 @@ bias = np.zeros(test_data[:,0].size)
 test_data = np.concatenate([test_data,bias[:,None]], axis=1)
 test_labels = np.loadtxt('lasso_data\data1_output_val')
 
-#np.random.seed(1)
+np.random.seed(1)
 
 
 #Generating corrolated data
@@ -39,14 +39,14 @@ class Lasso():
     def __init__(self,train_data,train_labels,test_data,test_labels,gamma):
         self.train_data = train_data
         self.train_labels = train_labels
-        self.test_data = test_data
-        self.test_labels = test_labels
+        #self.test_data = test_data
+        #self.test_labels = test_labels
         self.gamma = gamma
         self.N = train_data[:,0].size
         self.d = train_data[0,:].size
-        self.chi = np.zeros((self.N,self.N))
+        # self.chi = np.zeros((self.N,self.N))
         self.weights = np.random.normal(size=self.d)
-        self.b = np.random.normal(size=self.d)
+        # self.b = np.random.normal(size=self.d)
         self.predictions = np.zeros(self.N)
 
 
@@ -68,8 +68,10 @@ class Lasso():
         temp =self.weights[j]*self.train_data[:,j]
         test = self.predict()
         predictions_minus_j = self.predict()-temp
+
         error = self.train_labels - predictions_minus_j
-        z = (1/self.N)*np.sum(self.train_data[:,j]*error)
+
+        z = np.mean(self.train_data[:,j]*error)
         threshold = self.soft_thresholding_operator(z,self.gamma)
         self.weights[j] = threshold
 
@@ -84,10 +86,17 @@ class Lasso():
                 return z + y
 
     def iteration(self):
+        test = np.inf
         for j in range(self.weights.size):
+            test = self.error()
             self.update_weight(j)
+            if self.error() > test:
+                print(j)
+            #print(j,self.error())
 
     def error(self):
+        test = self.predict()-self.train_labels
+
         return np.sum((self.predict()-self.train_labels)**2)
 
     def cross_validate(self,k):
@@ -119,9 +128,9 @@ if __name__ == '__main__':
 
     cross_validating = False
     if not cross_validating:
-        LassoObj = Lasso(train_data,train_labels,test_data,test_labels,0.1)
+        LassoObj = Lasso(train_data,train_labels,test_data,test_labels,0)
         # print(Lasso.cross_validate(5))
-        iter = 20
+        iter = 3
         iterations = np.zeros(iter+1)
         iterations[0] = 0
         b_1 = np.zeros(iter+1)
@@ -133,7 +142,7 @@ if __name__ == '__main__':
 
         for i in range(iter):
             LassoObj.iteration()
-            print(LassoObj.error())
+            #print(LassoObj.error())
             iterations[i+1]=i+1
             b_1[i+1] = LassoObj.weights[0]
             b_2[i+1] = LassoObj.weights[1]
@@ -159,12 +168,13 @@ if __name__ == '__main__':
     else:
         gamma = []
         errors = []
-        gamma_values = np.arange(0.05,0.2,0.001)
+        gamma_values = np.arange(0.0,0.5,0.01)
         for g in gamma_values:
             LassoStep = Lasso(train_data, train_labels, test_data, test_labels, g)
-            gamma.append(g)
             error = LassoStep.cross_validate(5)
-            errors.append(error)
+            if error < 100:
+                gamma.append(g)
+                errors.append(error)
             print(g, ": ", error)
 
         fig = plt.figure()
