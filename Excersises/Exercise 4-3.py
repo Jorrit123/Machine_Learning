@@ -17,7 +17,7 @@ def u(t,x,T):
     return outer/(T-t)
 
 
-size = 1000
+size = 100
 x_grid = []
 x = np.zeros(size)
 dt = 0.01
@@ -34,5 +34,9 @@ for g_number in range (15):
 for plot in x_grid:
     plt.plot(plot)
 plt.plot(Time,x)
+plt.xlabel("Steps")
+plt.ylabel("Value")
+plt.savefig("v-"+str(v)+"T-"+str(T)+".png")
+
 plt.show()
 #print(x)
