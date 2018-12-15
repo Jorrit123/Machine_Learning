@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="bf7dbca3-16c7-4fbe-84ca-66e4ade73125" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Excersises/Assignment_3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Excersises/Assignment_3.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Excersises/venv/Exercise 4-3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Excersises/venv/Exercise 4-3.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,11 +14,35 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Assignment_2.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Excersises/Assignment_2.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4131">
+              <caret line="245" column="26" selection-start-line="245" selection-start-column="26" selection-end-line="245" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Exercise 4-3.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Excersises/venv/Exercise 4-3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="13" column="13" lean-forward="true" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+            <state relative-caret-position="493">
+              <caret line="29" column="47" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Boltzmann.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Excersises/Boltzmann.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="26" column="29" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -86,13 +109,13 @@
         <option value="$PROJECT_DIR$/GradientDescent/Boltzmann.py" />
         <option value="$PROJECT_DIR$/Excersises/Boltzmann.py" />
         <option value="$PROJECT_DIR$/Excersises/Assignment_2.py" />
-        <option value="$PROJECT_DIR$/Excersises/venv/Exercise 4-3.py" />
         <option value="$PROJECT_DIR$/Excersises/Assignment_3.py" />
+        <option value="$PROJECT_DIR$/Excersises/venv/Exercise 4-3.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
+    <option name="x" value="953" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
@@ -101,7 +124,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -133,6 +155,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -151,7 +174,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Assignment_3">
+  <component name="RunManager" selected="Python.Assignment_2">
     <configuration name="Assignment_2" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Machine_Learning" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -251,9 +274,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Assignment_3" />
-        <item itemvalue="Python.Exercise 4-3" />
         <item itemvalue="Python.Assignment_2" />
+        <item itemvalue="Python.Exercise 4-3" />
+        <item itemvalue="Python.Assignment_3" />
         <item itemvalue="Python.Boltzmann (1)" />
         <item itemvalue="Python.Boltzmann" />
       </list>
@@ -438,23 +461,30 @@
       <option name="project" value="LOCAL" />
       <updated>1544288423539</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Control">
+      <created>1544536807646</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1544536807646</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1406744" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.08324552" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.33441558" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.33116883" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32900432" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.33441558" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32792208" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39718616" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39718616" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -485,7 +515,8 @@
     <MESSAGE value="Boltzmann" />
     <MESSAGE value="Boltzmann update" />
     <MESSAGE value="Sadlife" />
-    <option name="LAST_COMMIT_MESSAGE" value="Sadlife" />
+    <MESSAGE value="Control" />
+    <option name="LAST_COMMIT_MESSAGE" value="Control" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -826,26 +857,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Excersises/Assignment_2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3910">
-          <caret line="232" selection-start-line="232" selection-end-line="232" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Excersises/Boltzmann.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="26" column="29" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Excersises/lasso_data/data1_input_train">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1683">
@@ -864,9 +875,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="501">
           <caret line="45" column="30" selection-start-line="45" selection-start-column="30" selection-end-line="45" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -891,10 +899,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Excersises/Boltzmann.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="26" column="29" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Excersises/Assignment_2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4131">
+          <caret line="245" column="26" selection-start-line="245" selection-start-column="26" selection-end-line="245" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Excersises/venv/Exercise 4-3.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="13" column="13" lean-forward="true" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        <state relative-caret-position="493">
+          <caret line="29" column="47" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>

@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 
 x0 = 0
-v = 0.01
+v = 0.02
 
 
 def dx(u,dt):
@@ -17,7 +17,7 @@ def u(t,x,T):
     return outer/(T-t)
 
 
-size = 1000
+size = 100
 x_grid = []
 x = np.zeros(size)
 dt = 0.01
