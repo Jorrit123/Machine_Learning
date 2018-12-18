@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 
 x0 = 0
-v = 0.02
+v = 0.1
 
 
 def dx(u,dt):

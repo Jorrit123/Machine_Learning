@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="bf7dbca3-16c7-4fbe-84ca-66e4ade73125" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Excersises/venv/Exercise 4-3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Excersises/venv/Exercise 4-3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Excersises/Assignment_1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Excersises/Assignment_1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Excersises/Exercise 4-3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Excersises/Exercise 4-3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Excersises/v-0.01T-1.0.png" beforeDir="false" afterPath="$PROJECT_DIR$/Excersises/v-0.01T-1.0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Excersises/v-0.1T-1.0.png" beforeDir="false" afterPath="$PROJECT_DIR$/Excersises/v-0.1T-1.0.png" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,11 +29,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Exercise 4-3.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Excersises/venv/Exercise 4-3.py">
+      <file leaf-file-name="Assignment_1.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Excersises/Assignment_1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="29" column="47" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
+            <state relative-caret-position="159">
+              <caret line="125" selection-start-line="125" selection-end-line="125" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cProfile.py" pinned="false" current-in-tab="false">
+        <entry file="file://C:/Program Files/Python37/Lib/cProfile.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="15" selection-start-line="15" selection-end-line="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="function_base.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../Programming/Python_interpreters/Lib/site-packages/numpy/lib/function_base.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34017">
+              <caret line="2001" selection-start-line="2001" selection-end-line="2001" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Exercise 4-3.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Excersises/Exercise 4-3.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -61,21 +94,9 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>min</find>
-      <find>calc_error</find>
-      <find>self.deltas</find>
-      <find>calc_prop(is_test</find>
-      <find>arange</find>
-      <find>max</find>
-      <find>batch</find>
-      <find>rel</find>
-      <find>print</find>
-      <find>set_valu</find>
-      <find>forward_pass</find>
       <find>clea</find>
       <find>plt</find>
       <find>prin</find>
-      <find>sigmoid</find>
       <find>old</find>
       <find>erro</find>
       <find>2</find>
@@ -91,6 +112,18 @@
       <find>predict</find>
       <find>self.d</find>
       <find>self.N</find>
+      <find>calc_erro</find>
+      <find>newton</find>
+      <find>ind</find>
+      <find>self.batch_indices =</find>
+      <find>sigmoid</find>
+      <find>mapp</find>
+      <find>dot</find>
+      <find>1.</find>
+      <find>vectoriz</find>
+      <find>lim</find>
+      <find>update</find>
+      <find>limi</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -111,11 +144,14 @@
         <option value="$PROJECT_DIR$/Excersises/Assignment_2.py" />
         <option value="$PROJECT_DIR$/Excersises/Assignment_3.py" />
         <option value="$PROJECT_DIR$/Excersises/venv/Exercise 4-3.py" />
+        <option value="$PROJECT_DIR$/Excersises/Exercise 4-3.py" />
+        <option value="$PROJECT_DIR$/Excersises/Assignment_1.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="953" />
+    <option name="x" value="198" />
+    <option name="y" value="140" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
@@ -138,17 +174,6 @@
             </path>
             <path>
               <item name="Machine_Learning" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Machine_Learning" type="462c0819:PsiDirectoryNode" />
-              <item name="Excersises" type="462c0819:PsiDirectoryNode" />
-              <item name="lasso_data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Machine_Learning" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Machine_Learning" type="462c0819:PsiDirectoryNode" />
-              <item name="GradientDescent" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Machine_Learning" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
@@ -160,7 +185,10 @@
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$/Excersises/Assignment_2.py" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.customizations" />
+  </component>
+  <component name="PyDebuggerOptionsProvider">
+    <option name="mySaveCallSignatures" value="true" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -174,7 +202,26 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Assignment_2">
+  <component name="RunManager" selected="Python.Assignment_1">
+    <configuration name="Assignment_1" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <output_file path="test" is_save="true" />
+      <module name="Machine_Learning" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Excersises" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Excersises/Assignment_1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="Assignment_2" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Machine_Learning" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -211,7 +258,7 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="Boltzmann (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Exercise 4-3 (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Machine_Learning" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -223,25 +270,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Excersises/Boltzmann.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="Boltzmann" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Machine_Learning" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/GradientDescent" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GradientDescent/Boltzmann.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Excersises/Exercise 4-3.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -267,18 +296,18 @@
     </configuration>
     <list>
       <item itemvalue="Python.Assignment_2" />
-      <item itemvalue="Python.Boltzmann" />
-      <item itemvalue="Python.Boltzmann (1)" />
       <item itemvalue="Python.Assignment_3" />
       <item itemvalue="Python.Exercise 4-3" />
+      <item itemvalue="Python.Exercise 4-3 (1)" />
+      <item itemvalue="Python.Assignment_1" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Assignment_2" />
+        <item itemvalue="Python.Assignment_1" />
+        <item itemvalue="Python.Exercise 4-3 (1)" />
         <item itemvalue="Python.Exercise 4-3" />
+        <item itemvalue="Python.Assignment_2" />
         <item itemvalue="Python.Assignment_3" />
-        <item itemvalue="Python.Boltzmann (1)" />
-        <item itemvalue="Python.Boltzmann" />
       </list>
     </recent_temporary>
   </component>
@@ -468,23 +497,30 @@
       <option name="project" value="LOCAL" />
       <updated>1544536807646</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Control">
+      <created>1544879466341</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1544879466341</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.08324552" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18387777" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.33116883" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32900432" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.33441558" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.42640692" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32792208" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39718616" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.44047618" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -543,6 +579,11 @@
           <line>68</line>
           <option name="timeStamp" value="130" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Excersises/Assignment_1.py</url>
+          <line>125</line>
+          <option name="timeStamp" value="137" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -551,7 +592,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="131" />
+      <option name="time" value="138" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -561,6 +602,31 @@
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="breakpointCondition">
+      <expression>
+        <expression-string>x &lt; -36</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>x &gt; 10</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>x &lt; -10 or x &gt; 10</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>x &lt; -10 || x &gt; 10</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>x &gt; 10 || x &lt; -10</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>self.gamma == 0.09</expression-string>
         <language-id>Python</language-id>
@@ -586,47 +652,9 @@
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
-      <expression>
-        <expression-string>!is_test</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>is_test == true</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Excersises/Assignment_2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2516">
-          <caret line="148" column="19" selection-start-line="148" selection-start-column="19" selection-end-line="148" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Excersises/Assignment_1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="31" column="26" lean-forward="true" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Excersises/Assignment_2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2448">
-          <caret line="148" column="19" selection-start-line="148" selection-start-column="19" selection-end-line="148" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Excersises/Assignment_1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="36" column="17" lean-forward="true" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Excersises/Assignment_2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2448">
@@ -871,13 +899,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Excersises/Assignment_1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="45" column="30" selection-start-line="45" selection-start-column="30" selection-end-line="45" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Excersises/lasso_data/readme">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -909,6 +930,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Excersises/venv/Exercise 4-3.py" />
+    <entry file="file://$PROJECT_DIR$/Excersises/Exercise 4-3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Excersises/Assignment_2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4131">
@@ -919,12 +951,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Excersises/venv/Exercise 4-3.py">
+    <entry file="file://$PROJECT_DIR$/../../Programming/Python_interpreters/Lib/site-packages/numpy/lib/function_base.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="47" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
+        <state relative-caret-position="34017">
+          <caret line="2001" selection-start-line="2001" selection-end-line="2001" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Excersises/awd.txt" />
+    <entry file="file://C:/Program Files/Python37/Lib/cProfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Excersises/Assignment_1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="125" selection-start-line="125" selection-end-line="125" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
