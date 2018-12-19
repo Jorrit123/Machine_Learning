@@ -1,10 +1,12 @@
+import time
+
 import numpy as np
 from mnist import MNIST
 import matplotlib.pyplot as plt
 
 # full = True -> all data
 # full = False -> 3's and 7's
-full = True
+full = False
 
 #PREPOCESSING TRAIN DATA
 mndata = MNIST('samples')
@@ -242,8 +244,12 @@ test = []
 iterations = []
 
 if __name__ == '__main__':
-    Network = Network([500,100,90], train_data[:1000], labels_matrix[:1000], test_data[:200], test_labels[:200],10)
-    for i in range(40000):
+    batch_size =20
+    layers = [100,100]
+    Network = Network(layers, train_data, labels_matrix, test_data, test_labels,batch_size)
+
+    start = time.time()
+    for i in range(3000):
         if i%100 == 0:
             print(i)
             print("train_error")
@@ -256,12 +262,18 @@ if __name__ == '__main__':
             iterations.append(i)
         Network.feed_forward()
         Network.back_propagate()
+    end = time.time()
 
 fig = plt.figure()
 ax1 = fig.add_subplot(111)
 
+
 ax1.plot(iterations, train, color='black', label='Training Error')
 ax1.plot(iterations, test, color='green', label='Test Error')
 
+name = "Batch: " + str(batch_size) + "Layers: " + str(layers) + " - Time Elapsed: " + str(round(end - start, 2))
+plt.title(name)
+
 plt.legend()
+#plt.savefig(name+".png")
 plt.show()
