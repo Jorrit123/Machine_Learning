@@ -61,3 +61,26 @@ train_error
 0.29985479186834463
 test_error
 0.288027477919529
+
+MULTI
+
+batch 20, layer 200
+3000
+train_error
+0.8437833333333333
+test_error
+0.8464
+
+batch 20, layer 100,100
+3000
+train_error
+0.8042
+test_error
+0.7984
+
+batch 50, layer 200
+3000
+train_error
+0.8425333333333334
+test_error
+0.8446

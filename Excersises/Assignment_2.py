@@ -244,12 +244,12 @@ test = []
 iterations = []
 
 if __name__ == '__main__':
-    batch_size = 2
-    layers = [20]
+    batch_size = 50
+    layers = [100,100]
     Network = Network(layers, train_data, labels_matrix, test_data, test_labels,batch_size)
 
     start = time.time()
-    for i in range(3001):
+    for i in range(5001):
         if i%100 == 0:
             print(i)
             print("train_error")
