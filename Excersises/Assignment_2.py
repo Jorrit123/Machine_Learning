@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 # full = True -> all data
 # full = False -> 3's and 7's
-full = False
+full = True
 
 #PREPOCESSING TRAIN DATA
 mndata = MNIST('samples')
@@ -244,12 +244,12 @@ test = []
 iterations = []
 
 if __name__ == '__main__':
-    batch_size =20
-    layers = [100,100]
+    batch_size = 2
+    layers = [20]
     Network = Network(layers, train_data, labels_matrix, test_data, test_labels,batch_size)
 
     start = time.time()
-    for i in range(3000):
+    for i in range(3001):
         if i%100 == 0:
             print(i)
             print("train_error")
