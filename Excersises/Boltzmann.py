@@ -11,9 +11,8 @@ images = np.array(images)[:1000]/255
 labels = np.array(labels)[:1000]
 train_data = np.concatenate([images, labels[:, None]], axis=1)
 
-print(np.cov([1,2]))
 
-digit = False
+digit = True
 Data = np.random.choice([-1, 1], size=(10,200))
 
 
@@ -34,7 +33,10 @@ class Boltzmann_machine():
         self.weights = np.random.normal(size=(N,N))
         self.thetas = np.random.normal(size = N)
 
-        self.clamped_means = np.sum(self.Data.T, axis=0)/P
+        if digit:
+            self.clamped_means = np.sum(self.Data, axis=0)/P
+        else:
+            self.clamped_means = np.sum(self.Data.T, axis=0) / P
         self.clamped_correlations = np.dot(self.Data, self.Data.T) * 1 / self.P
 
         #self.clamped_correlations = 0.99*(np.dot(Data.T,Data)/P)
@@ -106,6 +108,7 @@ if not digit:
     ax1.plot(iterations, change_in_thetas, color='green', label='change in thetas')
 
     plt.legend()
+    plt.xlabel("number of learning steps")
     plt.show()
 else:
 
