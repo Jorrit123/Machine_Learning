@@ -84,3 +84,48 @@ train_error
 0.8425333333333334
 test_error
 0.8446
+
+Batch 20 layer 100,100
+10000
+train_error
+0.7274833333333333
+test_error
+0.7258
+#######################################
+
+batch 20 layer 1000
+3000
+train_error
+0.8588
+test_error
+0.8578
+
+batch 20 layer 100,50,20
+3000
+train_error
+0.8283666666666667
+test_error
+0.8200000000000001
+
+batch 20 layer 100 100 100
+3000
+train_error
+0.8022
+test_error
+0.7975
+
+batch 1 layer 100 100
+3000
+train_error
+0.5811833333333334
+test_error
+0.5851999999999999
+
+
+best
+batch 1 100 100 ieter 10000
+10000
+train_error
+0.5793833333333334
+test_error
+0.5811

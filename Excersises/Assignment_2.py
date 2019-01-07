@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 # full = True -> all data
 # full = False -> 3's and 7's
-full = True
+full = False
 
 #PREPOCESSING TRAIN DATA
 mndata = MNIST('samples')
@@ -39,6 +39,12 @@ else:
     for l in train_labels:
         temp = [1,0] if l == 3 else [0,1]
         labels_matrix.append(temp)
+
+grote_matrix = np.random.normal(size=(12396,785))
+
+for i in range(12396):
+    for j in range(785):
+        grote_matrix[i,j] = train_data[i,j]
 
 labels_matrix = np.array(labels_matrix)
 
@@ -170,7 +176,7 @@ class Layer():
 
 
 class Network():
-    def __init__(self,sizes,train_data,train_labels,test_data,test_labels,batch_size):
+    def __init__(self,sizes,train_data,train_labels,test_data,test_labels,batch_size,lr):
         self.layers = []
         self.train_data = train_data
         self.train_labels = train_labels
@@ -178,7 +184,7 @@ class Network():
         self.test_labels = test_labels
         self.batch_size = batch_size
         self.batch_indices = np.arange(batch_size)
-        self.lr = 0.1
+        self.lr = lr
 
         #self.old_corect = []
 
@@ -244,12 +250,13 @@ test = []
 iterations = []
 
 if __name__ == '__main__':
-    batch_size = 50
-    layers = [100,100]
-    Network = Network(layers, train_data, labels_matrix, test_data, test_labels,batch_size)
+    batch_size = 10
+    layers = [10]
+    lr = 0.1
+    Network = Network(layers, train_data, labels_matrix, test_data, test_labels,batch_size,lr)
 
     start = time.time()
-    for i in range(5001):
+    for i in range(10000):
         if i%100 == 0:
             print(i)
             print("train_error")

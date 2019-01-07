@@ -12,7 +12,7 @@ labels = np.array(labels)[:1000]
 train_data = np.concatenate([images, labels[:, None]], axis=1)
 
 
-digit = True
+digit = False
 Data = np.random.choice([-1, 1], size=(10,200))
 
 
@@ -28,7 +28,7 @@ class Boltzmann_machine():
         self.means = np.zeros(shape=N)
         self.correlations = np.zeros(shape=(N, N))
 
-        self.state = np.random.choice([-1, 1], size = N)
+
 
         self.weights = np.random.normal(size=(N,N))
         self.thetas = np.random.normal(size = N)
@@ -51,6 +51,7 @@ class Boltzmann_machine():
 
     def sequential_dynamics(self):
         states = np.zeros(10)
+        self.state = np.random.choice([-1, 1], size=self.N)
         correlation = np.zeros((10,10))
         for i in range(500):
             n = np.random.choice(range(self.N))

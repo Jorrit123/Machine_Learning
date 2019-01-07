@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf7dbca3-16c7-4fbe-84ca-66e4ade73125" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/Excersises/Trying some stuff.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Excersises/Assignment_1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Excersises/Assignment_1.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Excersises/Assignment_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Excersises/Assignment_2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Excersises/Boltzmann.py" beforeDir="false" afterPath="$PROJECT_DIR$/Excersises/Boltzmann.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/multi results" beforeDir="false" afterPath="$PROJECT_DIR$/multi results" afterDir="false" />
@@ -19,8 +21,8 @@
       <file leaf-file-name="Assignment_2.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Excersises/Assignment_2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="247" column="22" lean-forward="true" selection-start-line="247" selection-start-column="22" selection-end-line="256" selection-end-column="30" />
+            <state relative-caret-position="155">
+              <caret line="215" column="35" selection-start-line="215" selection-start-column="26" selection-end-line="215" selection-end-column="35" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -28,11 +30,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Boltzmann.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Boltzmann.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Excersises/Boltzmann.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="56" column="52" lean-forward="true" selection-start-line="56" selection-start-column="52" selection-end-line="56" selection-end-column="52" />
+            <state relative-caret-position="2669">
+              <caret line="159" selection-start-line="159" selection-end-line="159" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -43,19 +45,31 @@
       <file leaf-file-name="multi results" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/multi results">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="80" column="7" selection-start-line="80" selection-start-column="7" selection-end-line="80" selection-end-column="7" />
+            <state relative-caret-position="1168">
+              <caret line="125" column="21" selection-start-line="125" selection-start-column="21" selection-end-line="125" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Assignment_1.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Assignment_1.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Excersises/Assignment_1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="103">
-              <caret line="125" selection-start-line="125" selection-end-line="125" />
+            <state relative-caret-position="295">
+              <caret line="203" column="18" selection-start-line="203" selection-start-column="18" selection-end-line="203" selection-end-column="18" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Trying some stuff.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Excersises/Trying some stuff.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="23" selection-start-line="23" selection-end-line="27" selection-end-column="37" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -64,8 +78,8 @@
       <file leaf-file-name="Exercise 4-3.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Excersises/Exercise 4-3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="23" lean-forward="true" selection-start-line="14" selection-start-column="23" selection-end-line="28" selection-end-column="46" />
+            <state relative-caret-position="221">
+              <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="28" selection-end-column="46" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -84,17 +98,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>plt</find>
-      <find>prin</find>
-      <find>old</find>
-      <find>erro</find>
-      <find>2</find>
-      <find>matrix</find>
-      <find>calcul</find>
-      <find>cross</find>
-      <find>test</find>
-      <find>1000</find>
-      <find>100</find>
       <find>alpha</find>
       <find>set_alph</find>
       <find>np.arra</find>
@@ -114,6 +117,17 @@
       <find>update</find>
       <find>limi</find>
       <find>train_data</find>
+      <find>print</find>
+      <find>clamped_mean</find>
+      <find>test_dat</find>
+      <find>deltas</find>
+      <find>batch_in</find>
+      <find>division</find>
+      <find>np.dot</find>
+      <find>divis</find>
+      <find>data</find>
+      <find>lr</find>
+      <find>batch_ind</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -133,10 +147,11 @@
         <option value="$PROJECT_DIR$/Excersises/Assignment_3.py" />
         <option value="$PROJECT_DIR$/Excersises/venv/Exercise 4-3.py" />
         <option value="$PROJECT_DIR$/Excersises/Exercise 4-3.py" />
-        <option value="$PROJECT_DIR$/Excersises/Assignment_1.py" />
-        <option value="$PROJECT_DIR$/multi results" />
-        <option value="$PROJECT_DIR$/Excersises/Assignment_2.py" />
         <option value="$PROJECT_DIR$/Excersises/Boltzmann.py" />
+        <option value="$PROJECT_DIR$/multi results" />
+        <option value="$PROJECT_DIR$/Excersises/Trying some stuff.py" />
+        <option value="$PROJECT_DIR$/Excersises/Assignment_2.py" />
+        <option value="$PROJECT_DIR$/Excersises/Assignment_1.py" />
       </list>
     </option>
   </component>
@@ -150,6 +165,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -175,7 +191,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -197,7 +212,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Boltzmann">
+  <component name="RunManager" selected="Python.Assignment_1">
     <configuration name="Assignment_1" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <output_file path="test" is_save="true" />
       <module name="Machine_Learning" />
@@ -271,7 +286,7 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="Exercise 4-3" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Trying some stuff" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Machine_Learning" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -279,11 +294,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Excersises/venv" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Excersises" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Excersises/venv/Exercise 4-3.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Excersises/Trying some stuff.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -291,18 +306,18 @@
     </configuration>
     <list>
       <item itemvalue="Python.Assignment_2" />
-      <item itemvalue="Python.Exercise 4-3" />
       <item itemvalue="Python.Exercise 4-3 (1)" />
       <item itemvalue="Python.Assignment_1" />
       <item itemvalue="Python.Boltzmann" />
+      <item itemvalue="Python.Trying some stuff" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Boltzmann" />
-        <item itemvalue="Python.Assignment_2" />
         <item itemvalue="Python.Assignment_1" />
+        <item itemvalue="Python.Assignment_2" />
+        <item itemvalue="Python.Trying some stuff" />
+        <item itemvalue="Python.Boltzmann" />
         <item itemvalue="Python.Exercise 4-3 (1)" />
-        <item itemvalue="Python.Exercise 4-3" />
       </list>
     </recent_temporary>
   </component>
@@ -499,40 +514,44 @@
       <option name="project" value="LOCAL" />
       <updated>1544879466341</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Bolztmanmn">
+      <created>1546693809498</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1546693809498</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Now it works! Really!">
+      <created>1546695479955</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1546695479955</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.09378293" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18387777" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.34848484" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.33116883" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32900432" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.4090909" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32792208" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.44805196" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.44047618" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.33116883" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18387777" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.42640692" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.44047618" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32900432" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32792208" />
-      <window_info anchor="bottom" id="Python Console" order="7" weight="0.32900432" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -557,7 +576,9 @@
     <MESSAGE value="Boltzmann update" />
     <MESSAGE value="Sadlife" />
     <MESSAGE value="Control" />
-    <option name="LAST_COMMIT_MESSAGE" value="Control" />
+    <MESSAGE value="Bolztmanmn" />
+    <MESSAGE value="Now it works! Really!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Now it works! Really!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -579,6 +600,21 @@
           <line>68</line>
           <option name="timeStamp" value="130" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Excersises/Boltzmann.py</url>
+          <line>74</line>
+          <option name="timeStamp" value="141" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Excersises/Trying some stuff.py</url>
+          <line>66</line>
+          <option name="timeStamp" value="143" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Excersises/Trying some stuff.py</url>
+          <line>31</line>
+          <option name="timeStamp" value="144" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -587,7 +623,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="140" />
+      <option name="time" value="145" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -650,13 +686,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Excersises/Assignment_2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2448">
-          <caret line="148" column="19" selection-start-line="148" selection-start-column="19" selection-end-line="148" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Excersises/Assignment_1.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="935">
@@ -895,16 +924,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Excersises/venv/Exercise 4-3.py" />
-    <entry file="file://$PROJECT_DIR$/Excersises/Exercise 4-3.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="23" lean-forward="true" selection-start-line="14" selection-start-column="23" selection-end-line="28" selection-end-column="46" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../Programming/Python_interpreters/Lib/site-packages/numpy/lib/function_base.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34017">
@@ -920,25 +939,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Excersises/Assignment_1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
-          <caret line="125" selection-start-line="125" selection-end-line="125" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/multi-30-200,200.png">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/multi results">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="80" column="7" selection-start-line="80" selection-start-column="7" selection-end-line="80" selection-end-column="7" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Excersises/Assignment_5.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -947,22 +949,59 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Excersises/Boltzmann.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2669">
+          <caret line="159" selection-start-line="159" selection-end-line="159" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/multi results">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1168">
+          <caret line="125" column="21" selection-start-line="125" selection-start-column="21" selection-end-line="125" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Excersises/Exercise 4-3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="28" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Excersises/Trying some stuff.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="23" selection-start-line="23" selection-end-line="27" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Excersises/Assignment_2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="247" column="22" lean-forward="true" selection-start-line="247" selection-start-column="22" selection-end-line="256" selection-end-column="30" />
+        <state relative-caret-position="155">
+          <caret line="215" column="35" selection-start-line="215" selection-start-column="26" selection-end-line="215" selection-end-column="35" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Excersises/Boltzmann.py">
+    <entry file="file://$PROJECT_DIR$/Excersises/Assignment_1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="56" column="52" lean-forward="true" selection-start-line="56" selection-start-column="52" selection-end-line="56" selection-end-column="52" />
+        <state relative-caret-position="295">
+          <caret line="203" column="18" selection-start-line="203" selection-start-column="18" selection-end-line="203" selection-end-column="18" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>

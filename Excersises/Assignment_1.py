@@ -20,6 +20,17 @@ data = data[(data[:,-1] == 3) | (data[:,-1] == 7)]
 data[:,-1][data[:,-1]==3]=0
 data[:,-1][data[:,-1]==7]=1
 
+labels = data[:,-1]
+data = data[:,:-1]
+
+grote_matrix = np.random.normal(size=(12396,785))
+
+for i in range(12396):
+    for j in range(785):
+        grote_matrix[i,j] = data[i,j]
+
+
+
 
 test_images, test_labels = mndata.load_testing()
 test_images = np.array(test_images)/255
@@ -31,9 +42,11 @@ test_data = test_data[(test_data[:,-1] == 3) | (test_data[:,-1] == 7)]
 test_data[:,-1][test_data[:,-1]==3]=0
 test_data[:,-1][test_data[:,-1]==7]=1
 
-data = data[:test_data[:,0].size]
+test_labels = test_data[:,-1]
+test_data = test_data[:,:-1]
 
-print(data.shape)
+#data = data[:test_data[:,0].size]
+
 
 
 #labels = labels[labels == 3 or labels ==7]
@@ -41,10 +54,12 @@ print(data.shape)
 class Gradient_Descent():
     temp_gradients =[]
 
-    def __init__(self,data, test_data,momentum=False,decay=False,newton=False,line_search=False,conjugate=False, batch_size = 0):
+    def __init__(self,data, test_data, labels, test_labels, momentum=False,decay=False,newton=False,line_search=False,conjugate=False, batch_size = 0):
         self.pixels = 785
         self.test_data = test_data
         self.data = data
+        self.labels = labels
+        self.test_labels = test_labels
         self.weights = np.random.normal(scale=1,size=self.pixels)
         self.batch_size = self.data[:, 1].size
         self.batch_size = batch_size if batch_size != 0 else self.batch_size
@@ -87,28 +102,32 @@ class Gradient_Descent():
 
         if self.newton:
             x = self.limitMapping(x)
-        self.probabilities = 1 / (1 + np.exp(-np.dot(prop_data[self.batch_indices, :-1], x)))
+        # there used to be prop_data[Batch_indices]
+        self.probabilities = 1 / (1 + np.exp(-np.dot(prop_data, x)))
+
         return self.probabilities
 
     def calc_error(self,probs):
-        error = self.data[:,-1]*np.log(probs) + (1-self.data[:,-1])*np.log(1-probs)
+        error = self.labels*np.log(probs) + (1-self.labels)*np.log(1-probs)
         if self.decay:
             error += (self.weight_decay_rate / (2 * self.batch_size)) * np.sum(self.weights**2)
         return (-1 / self.batch_size) * np.sum(error)
 
     def calc_error_for_eval(self, is_test = False):
         error_data = self.data
+        error_labels = self.labels
         if is_test:
             error_data = self.test_data
+            error_labels = self.test_labels
         self.batch_indices = np.arange(error_data[:,1].size)
         probs = self.calc_prop(is_test = is_test)
-        error = error_data[:, -1] * np.log(probs) + (1 - error_data[:, -1]) * np.log(1 - probs)
+        error = error_labels * np.log(probs) + (1 - error_labels) * np.log(1 - probs)
         # if self.decay:
         #     error += (self.weight_decay_rate / (2 * self.batch_size)) * np.sum(self.weights**2)
         return (-1 / error_data[:,1].size) * np.sum(error)
 
     def gradient(self):
-        gradients = self.division * np.dot((self.probabilities - self.data[self.batch_indices, -1]), self.data[self.batch_indices, :-1])
+        gradients = self.division * np.dot((self.probabilities - self.labels), self.data)
         if self.decay or self.newton:
             gradients += (self.weight_decay_rate / self.batch_size) * self.weights
         if self.line_search:
@@ -122,7 +141,7 @@ class Gradient_Descent():
         return gradients
 
     def calculate_hessian(self):
-        hessian = np.dot(np.dot(self.probabilities*(1-self.probabilities),self.data[:,:-1]),self.data[:,:-1].T)
+        hessian = np.dot(np.dot(self.probabilities*(1-self.probabilities),self.data),self.data.T)
         return np.linalg.inv(self.division * hessian + np.identity(self.pixels) * (self.weight_decay_rate / self.batch_size))
 
     def update_weights(self):
@@ -156,13 +175,15 @@ class Gradient_Descent():
         self.update_weights()
 
 
+
     def calc_classification_error(self, is_test = False):
         class_data = self.data if not is_test else self.test_data
-        self.batch_indices = np.arange(class_data[:, 1].size)
+        class_label = self.labels if not is_test else self.test_labels
+        self.batch_indices = np.arange(class_label.size)
         self.probabilities = self.calc_prop(is_test=is_test)
         guess = np.round(self.probabilities)
         guess = list(map(bool, guess))
-        labels = list(map(bool,class_data[:,-1]))
+        labels = list(map(bool,class_label))
         right_guess = np.array(guess) == np.array(labels)
         return 1-np.array(right_guess).sum()/class_data[:,1].size
 
@@ -174,14 +195,14 @@ def main():
     test = []
     iterations = []
     if __name__ == '__main__':
-        Test = Gradient_Descent(data, test_data, False, False, True, False, False, 0)
+        Test = Gradient_Descent(grote_matrix, test_data, labels, test_labels, False, False, False, False, False, 0)
         # Test.run_iteration()
         # print(Test.line_search_error(0.1))
         start = time.time()
-        for i in range(50):
+        for i in range(20000):
             Test.run_iteration()
-            #if i%100 == 0 and i > 1:
-            if True:
+            if i%500 == 0 and i > 1:
+            #if False:
                 print(i)
 
                 print("Train loss, test loss")
@@ -194,9 +215,10 @@ def main():
         print("Train class error, Test Class errror")
         print(Test.calc_classification_error(False))
         print(Test.calc_classification_error(True))
-        setting = "Newton"
+        setting = "Gradient descent"
         name = setting + "learning_rate-" + str(Test.learning_rate) + str(Test.momentum_term)
-        print(name)
+        #print(name)
+        print(end-start)
         # print(Test.learning_rate,Test.momentum_term)
     fig = plt.figure()
     ax1 = fig.add_subplot(111)
