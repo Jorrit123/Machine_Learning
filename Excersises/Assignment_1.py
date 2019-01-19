@@ -54,7 +54,7 @@ test_data = test_data[:,:-1]
 class Gradient_Descent():
     temp_gradients =[]
 
-    def __init__(self,data, test_data, labels, test_labels, momentum=False,decay=False,newton=False,line_search=False,conjugate=False, batch_size = 0):
+    def __init__(self,data, test_data, labels, test_labels,learning_rate,momentum_term, momentum=False,decay=False,newton=False,line_search=False,conjugate=False, batch_size = 0):
         self.pixels = 785
         self.test_data = test_data
         self.data = data
@@ -64,9 +64,9 @@ class Gradient_Descent():
         self.batch_size = self.data[:, 1].size
         self.batch_size = batch_size if batch_size != 0 else self.batch_size
         self.probabilities = np.zeros(self.batch_size)
-        self.learning_rate = 0.5
-        self.momentum_term = 0.6
-        self.weight_decay_rate = 0.1
+        self.learning_rate = learning_rate
+        self.momentum_term = momentum_term
+        self.weight_decay_rate = 1
         self.previous_gradients = np.ones(self.pixels)
         self.deltas = np.ones(self.pixels)
         self.momentum = momentum
@@ -120,13 +120,14 @@ class Gradient_Descent():
             error_data = self.test_data
             error_labels = self.test_labels
         self.batch_indices = np.arange(error_data[:,1].size)
-        probs = self.calc_prop(is_test = is_test)
+        probs = self.limitMapping(self.calc_prop(is_test = is_test))
         error = error_labels * np.log(probs) + (1 - error_labels) * np.log(1 - probs)
         # if self.decay:
         #     error += (self.weight_decay_rate / (2 * self.batch_size)) * np.sum(self.weights**2)
         return (-1 / error_data[:,1].size) * np.sum(error)
 
     def gradient(self):
+        test = self.probabilities - self.labels
         gradients = self.division * np.dot((self.probabilities - self.labels), self.data)
         if self.decay or self.newton:
             gradients += (self.weight_decay_rate / self.batch_size) * self.weights
@@ -141,8 +142,12 @@ class Gradient_Descent():
         return gradients
 
     def calculate_hessian(self):
-        hessian = np.dot(np.dot(self.probabilities*(1-self.probabilities),self.data),self.data.T)
-        return np.linalg.inv(self.division * hessian + np.identity(self.pixels) * (self.weight_decay_rate / self.batch_size))
+        hessian = np.dot(np.multiply(self.probabilities * (1 - self.probabilities), self.data.T),self.data)
+        inverted = np.linalg.inv(1 / self.batch_size * hessian + np.identity(self.pixels) * (self.weight_decay_rate / self.batch_size))
+        return inverted
+
+        # hessian = np.dot(np.dot(self.probabilities*(1-self.probabilities),self.data),self.data.T)
+        # return np.linalg.inv(self.division * hessian + np.identity(self.pixels) * (self.weight_decay_rate / self.batch_size))
 
     def update_weights(self):
         if self.momentum:
@@ -161,6 +166,7 @@ class Gradient_Descent():
 
     def line_search_error(self,gamma):
         x = self.calc_prop(self.weights - gamma*self.temp_gradients)
+        x = self.limitMapping(x)
         return self.calc_error(x)
 
     def create_batch_indices(self):
@@ -190,49 +196,58 @@ class Gradient_Descent():
     def prepare_iteration(self):
         self.batch_indices = np.arange(self.data[:, 1].size)
 
-def main():
+def main(lr,mt,bs):
     train = []
     test = []
     iterations = []
-    if __name__ == '__main__':
-        Test = Gradient_Descent(grote_matrix, test_data, labels, test_labels, False, False, False, False, False, 0)
-        # Test.run_iteration()
-        # print(Test.line_search_error(0.1))
-        start = time.time()
-        for i in range(20000):
-            Test.run_iteration()
-            if i%500 == 0 and i > 1:
-            #if False:
-                print(i)
 
-                print("Train loss, test loss")
-                print(Test.calc_error_for_eval(False))
-                print(Test.calc_error_for_eval(True))
-                train.append(Test.calc_error_for_eval(False))
-                test.append(Test.calc_error_for_eval(True))
-                iterations.append(i)
-        end = time.time()
-        print("Train class error, Test Class errror")
-        print(Test.calc_classification_error(False))
-        print(Test.calc_classification_error(True))
-        setting = "Gradient descent"
-        name = setting + "learning_rate-" + str(Test.learning_rate) + str(Test.momentum_term)
-        #print(name)
-        print(end-start)
-        # print(Test.learning_rate,Test.momentum_term)
-    fig = plt.figure()
-    ax1 = fig.add_subplot(111)
+    Test = Gradient_Descent(grote_matrix, test_data, labels, test_labels, lr,mt, False, False, False, False, False, bs)
+    # Test.run_iteration()
+    # print(Test.line_search_error(0.1))
+    start = time.time()
+    for i in range(10000):
+        Test.run_iteration()
+        #if i%1 == 0 and i > 1:
+        if False:
+            print(i)
 
-    ax1.plot(iterations, train, color='black', label='Training Error')
-    ax1.plot(iterations, test, color='green', label='Test Error')
-    plt.title(setting + " - Time Elapsed: " + str(round(end - start, 2)))
-    plt.ylabel("Error")
-    plt.xlabel("Number of Iterations")
-
-    plt.legend()
-    # plt.savefig(name)
-    plt.show()
+            print("Train loss, test loss")
+            # print(Test.calc_error_for_eval(False))
+            # print(Test.calc_error_for_eval(True))
+            print(Test.calc_classification_error(False))
+            print(Test.calc_classification_error(True))
+            train.append(Test.calc_error_for_eval(False))
+            test.append(Test.calc_error_for_eval(True))
+            iterations.append(i)
+    end = time.time()
+    print("Train class error, Test Class error")
+    print("Learning rate: ", Test.learning_rate)
+    print("Batch size: ", bs)
+    print(Test.calc_classification_error(False))
+    print(Test.calc_classification_error(True))
+    setting = "Gradient descent"
+    name = setting + "learning_rate-" + str(Test.learning_rate) + str(Test.momentum_term)
+    #print(name)
+    print("Time elapsed: ", end-start)
+    # print(Test.learning_rate,Test.momentum_term)
+    # fig = plt.figure()
+    # ax1 = fig.add_subplot(111)
+    #
+    # ax1.plot(iterations, train, color='black', label='Training Error')
+    # ax1.plot(iterations, test, color='green', label='Test Error')
+    # plt.title(setting + " - Time Elapsed: " + str(round(end - start, 2)))
+    # plt.ylabel("Error")
+    # plt.xlabel("Number of Iterations")
+    #
+    # plt.legend()
+    # # plt.savefig(name)
+    # plt.show()
 
 if __name__ == '__main__':
     #cProfile.run('main()',sort='cumtime')
-    main()
+    lrs = [0.1,0.5,1]
+    bs = [50, 200, 1000]
+    for x in lrs:
+        for y in bs:
+            print(" ")
+            main(x,0.1,y)
