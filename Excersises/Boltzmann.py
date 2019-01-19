@@ -7,12 +7,23 @@ images, labels = mndata.load_training()
 test, test_labels = mndata.load_testing()
 test = np.array(test)/255
 test_labels = np.array(test_labels)
-images = np.array(images)[:1000]/255
-labels = np.array(labels)[:1000]
+images = np.array(images)/255
+labels = np.array(labels)
+images[images<0.5]=-1
+images[images>=0.5]=1
+
+counter = 0
+for i in range(images[:,1].size):
+    for j in range(images[1,:].size):
+        rand = np.random.rand()
+        if rand >0.95:
+            images[i,j] = 1#-images[i,j]
+            counter += 1
+print(counter)
+
 train_data = np.concatenate([images, labels[:, None]], axis=1)
 
-
-digit = False
+digit = True
 Data = np.random.choice([-1, 1], size=(10,200))
 
 
@@ -27,8 +38,6 @@ class Boltzmann_machine():
 
         self.means = np.zeros(shape=N)
         self.correlations = np.zeros(shape=(N, N))
-
-
 
         self.weights = np.random.normal(size=(N,N))
         self.thetas = np.random.normal(size = N)
@@ -87,8 +96,6 @@ class Boltzmann_machine():
         self.free_energy = a+b+c
 
 
-
-
 if not digit:
     Boltzmann_machine = Boltzmann_machine(200,10,0.1,Data)
     change_in_weights = []
@@ -116,13 +123,10 @@ else:
     data_splits = []
     machines = []
 
-
     for i in range(10):
         data_splits.append(train_data[(train_data[:, -1] == i)])
         data_splits[i] = data_splits[i][:,:-1]
-        data_splits[i][data_splits[i]<0.5] = -1
-        data_splits[i][data_splits[i]!=-1] = 1
-
+    print(data_splits[i].shape)
 
     for i in range(10):
         machines.append(Boltzmann_machine(data_splits[i][:,0].size, data_splits[i][0,:].size,0.01,data_splits[i]))
