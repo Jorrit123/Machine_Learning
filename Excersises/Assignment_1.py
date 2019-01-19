@@ -207,8 +207,8 @@ def main(lr,mt,bs):
     start = time.time()
     for i in range(10000):
         Test.run_iteration()
-        #if i%1 == 0 and i > 1:
-        if False:
+        if i%100 == 0 and i > 1:
+        # if False:
             print(i)
 
             print("Train loss, test loss")
@@ -229,25 +229,21 @@ def main(lr,mt,bs):
     name = setting + "learning_rate-" + str(Test.learning_rate) + str(Test.momentum_term)
     #print(name)
     print("Time elapsed: ", end-start)
-    # print(Test.learning_rate,Test.momentum_term)
-    # fig = plt.figure()
-    # ax1 = fig.add_subplot(111)
-    #
-    # ax1.plot(iterations, train, color='black', label='Training Error')
-    # ax1.plot(iterations, test, color='green', label='Test Error')
-    # plt.title(setting + " - Time Elapsed: " + str(round(end - start, 2)))
-    # plt.ylabel("Error")
-    # plt.xlabel("Number of Iterations")
-    #
-    # plt.legend()
-    # # plt.savefig(name)
-    # plt.show()
+    print(Test.learning_rate,Test.momentum_term)
+    fig = plt.figure()
+    ax1 = fig.add_subplot(111)
+
+    ax1.plot(iterations, train, color='black', label='Training Error')
+    ax1.plot(iterations, test, color='green', label='Test Error')
+    plt.title(setting + " - Time Elapsed: " + str(round(end - start, 2)))
+    plt.ylabel("Error")
+    plt.xlabel("Number of Iterations")
+
+    plt.legend()
+    # plt.savefig(name)
+    plt.show()
 
 if __name__ == '__main__':
     #cProfile.run('main()',sort='cumtime')
-    lrs = [0.1,0.5,1]
-    bs = [50, 200, 1000]
-    for x in lrs:
-        for y in bs:
             print(" ")
-            main(x,0.1,y)
+            main(0.01,0.1,50)
