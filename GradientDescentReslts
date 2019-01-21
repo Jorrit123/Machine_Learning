@@ -1,0 +1,86 @@
+Nomal gadent descent
+
+Train class error, Test Class error
+Learnng rate:  0.01
+0.032107131332687944
+0.036310107948969605
+Time elapsed:  103.09890675544739
+
+Train class error, Test Class error
+Learnng rate:  0.1
+0.012665375927718658
+0.02257114818449457
+Time elapsed:  104.09895658493042
+
+Train class error, Test Class error
+Learnng rate:  0.5
+0.007825104872539512
+0.015701668302257166
+Time elapsed:  104.56773090362549
+
+Train class error, Test Class error
+Learnng rate:  1
+0.005485640529202973
+0.02060843964671244
+Time elapsed:  105.55215644836426
+
+
+Momentum
+
+Train class error, Test Class error
+Learnng rate:  0.5
+Momentum term: 0.3
+0.006534365924491747
+0.017664376840039298
+Time elapsed:  114.36509227752686
+
+Train class error, Test Class error
+Learnng rate:  0.5
+Momentum term: 0.6
+0.004920942239432069
+0.01962708537782143
+Time elapsed:  113.59943294525146
+
+Train class error, Test Class error
+Learnng rate:  1
+Momentum term: 0.3
+0.005324298160697016
+0.018645731108930308
+Time elapsed:  114.94324946403503
+
+Train class error, Test Class error
+Learnng rate:  1
+Momentum term: 0.6
+0.004436915133914199
+0.018645731108930308
+Time elapsed:  113.78694367408752
+
+
+Weight decay
+
+Train class error, Test Class error
+Learnng rate:  0.01
+0.028638270409809596
+0.036310107948969605
+Time elapsed:  115.3807737827301
+
+Train class error, Test Class error
+Learnng rate:  0.1
+0.011616650532429773
+0.02158979391560356
+Time elapsed:  115.99017286300659
+
+Train class error, Test Class error
+Learnng rate:  0.5
+0.0070990642142626514
+0.018645731108930308
+Time elapsed:  116.31832003593445
+
+Train class error, Test Class error
+Learnng rate:  1
+0.005727654081961964
+0.016683022571148176
+Time elapsed:  119.5684802532196
+
+
+Line search:
