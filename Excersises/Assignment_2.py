@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 # full = True -> all data
 # full = False -> 3's and 7's
-full = False
+full = True
 
 #PREPOCESSING TRAIN DATA
 mndata = MNIST('samples')
@@ -17,6 +17,12 @@ print(images.shape,bias.shape)
 images = np.concatenate([images,bias[:,None]], axis=1)
 labels = np.array(labels)
 
+grote_matrix = np.random.normal(size=(60000,785))
+
+for i in range(60000):
+    for j in range(785):
+        grote_matrix[i,j] = images[i,j]
+
 
 labels_matrix= []
 if full:
@@ -24,27 +30,20 @@ if full:
         temp = np.zeros(10)
         temp[l]=1
         labels_matrix.append(temp)
-    train_data = images
+    train_data = grote_matrix
 
 
 else:
-    train_data = np.concatenate([images, labels[:, None]], axis=1)
+    train_data = np.concatenate([grote_matrix, labels[:, None]], axis=1)
     train_data = train_data[(train_data[:, -1] == 3) | (train_data[:, -1] == 7)]
 
     train_labels = train_data[:, -1]
     train_data = train_data[:, :-1]
 
-
-
     for l in train_labels:
         temp = [1,0] if l == 3 else [0,1]
         labels_matrix.append(temp)
 
-grote_matrix = np.random.normal(size=(12396,785))
-
-for i in range(12396):
-    for j in range(785):
-        grote_matrix[i,j] = train_data[i,j]
 
 labels_matrix = np.array(labels_matrix)
 
@@ -185,7 +184,7 @@ class Network():
         self.batch_size = batch_size
         self.batch_indices = np.arange(batch_size)
         self.lr = lr
-
+        self.batch_counter = 0
         #self.old_corect = []
 
         #input layer
@@ -205,9 +204,13 @@ class Network():
             self.layers[i].set_previous_layer(self.layers[i-1])
 
     def create_batch(self,test=False):
-        self.batch_indices = np.random.randint(0,self.train_data[:,0].size, size = self.batch_size)
-        self.batch = self.train_data[self.batch_indices,:]
-        self.batch_labels = self.train_labels[self.batch_indices,:]
+        if self.batch_counter + self.batch_size > self.train_data[:, 1].size:
+            self.batch_counter = 0
+        self.batch_indices = np.arange(self.batch_counter, self.batch_size + self.batch_counter)
+        self.batch_counter += self.batch_size
+
+        self.batch_data = self.train_data[self.batch_indices]
+        self.batch_labels = self.train_labels[self.batch_indices]
 
     def feed_forward(self):
         self.layers[0].clean_up()
@@ -250,10 +253,10 @@ test = []
 iterations = []
 
 if __name__ == '__main__':
-    batch_size = 10
-    layers = [10]
+    batch_size = 20
+    layers = [100]
     lr = 0.1
-    Network = Network(layers, train_data, labels_matrix, test_data, test_labels,batch_size,lr)
+    Network = Network(layers, grote_matrix, labels_matrix, test_data, test_labels,batch_size,lr)
 
     start = time.time()
     for i in range(10000):
@@ -264,6 +267,7 @@ if __name__ == '__main__':
             print("test_error")
             print(Network.calculate_error(True))
             print("#######################################")
+
             train.append(Network.calculate_error())
             test.append(Network.calculate_error(True))
             iterations.append(i)

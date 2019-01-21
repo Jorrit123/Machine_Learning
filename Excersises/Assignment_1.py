@@ -54,6 +54,7 @@ test_data = test_data[:,:-1]
 class Gradient_Descent():
     temp_gradients =[]
 
+
     def __init__(self,data, test_data, labels, test_labels, momentum=False,decay=False,newton=False,line_search=False,conjugate=False, batch_size = 0):
         self.pixels = 785
         self.test_data = test_data
@@ -76,6 +77,7 @@ class Gradient_Descent():
         self.batch_indices = np.arange(self.data[:,1].size)
         self.line_search = line_search
         self.conjugate = conjugate
+        self.batch_counter = 0
 
         self.mapping = np.vectorize(self.sigmoid)
         self.limitMapping = np.vectorize(self.limit_propbs)
@@ -96,6 +98,13 @@ class Gradient_Descent():
 
     def calc_prop(self,x=None, is_test = False):
         prop_data = self.data if not is_test else self.test_data
+        if is_test:
+            prop_data = self.test_data
+        elif not is_test and self.batch_size == self.data[:, 1].size:
+            prop_data = self.data
+        else:
+            prop_data = self.batch_data
+
         if x is None:
             x = self.weights
         #self.probabilities = self.limitMapping(self.mapping(np.dot(prop_data[self.batch_indices,:-1],x)))
@@ -104,6 +113,7 @@ class Gradient_Descent():
             x = self.limitMapping(x)
         # there used to be prop_data[Batch_indices]
         self.probabilities = 1 / (1 + np.exp(-np.dot(prop_data, x)))
+        self.probabilities = self.limitMapping(self.probabilities)
 
         return self.probabilities
 
@@ -127,7 +137,15 @@ class Gradient_Descent():
         return (-1 / error_data[:,1].size) * np.sum(error)
 
     def gradient(self):
-        gradients = self.division * np.dot((self.probabilities - self.labels), self.data)
+        if self.batch_size == self.data[:, 1].size:
+            prop_data = self.data
+            prop_labels = self.labels
+        else:
+            prop_data = self.batch_data
+            prop_labels = self.batch_labels
+
+
+        gradients = self.division * np.dot((self.probabilities - prop_labels), prop_data)
         if self.decay or self.newton:
             gradients += (self.weight_decay_rate / self.batch_size) * self.weights
         if self.line_search:
@@ -164,8 +182,13 @@ class Gradient_Descent():
         return self.calc_error(x)
 
     def create_batch_indices(self):
-        self.batch_indices = np.random.randint(0,self.data[:,1].size, size = self.batch_size)
+        if self.batch_counter+ self.batch_size > self.data[:,1].size:
+            self.batch_counter = 0
+        self.batch_indices = np.arange(self.batch_counter,self.batch_size+self.batch_counter)
+        self.batch_counter += self.batch_size
 
+        self.batch_data = self.data[self.batch_indices]
+        self.batch_labels = self.labels[self.batch_indices]
 
     def run_iteration(self):
         self.prepare_iteration()
@@ -173,8 +196,6 @@ class Gradient_Descent():
             self.create_batch_indices()
         self.probabilities = self.calc_prop()
         self.update_weights()
-
-
 
     def calc_classification_error(self, is_test = False):
         class_data = self.data if not is_test else self.test_data
@@ -199,7 +220,7 @@ def main():
         # Test.run_iteration()
         # print(Test.line_search_error(0.1))
         start = time.time()
-        for i in range(20000):
+        for i in range(10000):
             Test.run_iteration()
             if i%500 == 0 and i > 1:
             #if False:

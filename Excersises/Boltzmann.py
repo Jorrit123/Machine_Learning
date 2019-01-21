@@ -12,20 +12,19 @@ labels = np.array(labels)
 images[images<0.5]=-1
 images[images>=0.5]=1
 
-counter = 0
+
+
 for i in range(images[:,1].size):
     for j in range(images[1,:].size):
         rand = np.random.rand()
-        if rand >0.95:
-            images[i,j] = 1#-images[i,j]
-            counter += 1
-print(counter)
+        if rand >0.85:
+            images[i,j] = -images[i,j]
+
 
 train_data = np.concatenate([images, labels[:, None]], axis=1)
 
 digit = True
-Data = np.random.choice([-1, 1], size=(10,200))
-
+Data = np.random.choice([-1, 1], size=(10,10))
 
 
 class Boltzmann_machine():
@@ -34,7 +33,7 @@ class Boltzmann_machine():
         self.N = N
         self.eta = learning_rate
 
-        self.Data = 0.99*Data
+        self.Data = Data
 
         self.means = np.zeros(shape=N)
         self.correlations = np.zeros(shape=(N, N))
@@ -46,12 +45,13 @@ class Boltzmann_machine():
             self.clamped_means = np.sum(self.Data, axis=0)/P
         else:
             self.clamped_means = np.sum(self.Data.T, axis=0) / P
-        self.clamped_correlations = np.dot(self.Data, self.Data.T) * 1 / self.P
+
+        self.clamped_correlations = np.dot(self.Data.T, self.Data) * 1 / self.P
 
         #self.clamped_correlations = 0.99*(np.dot(Data.T,Data)/P)
         #self.clamped_correlations = (np.dot(Data.T,Data)-np.diag(1/(1-self.clamped_means**2))*1/P)
         self.C = np.cov(Data.T)
-
+        print(self.C.shape)
         self.free_energy = 0
 
     @staticmethod
@@ -75,13 +75,7 @@ class Boltzmann_machine():
         self.correlations = correlation/500
 
     def mean_field(self):
-        # C = self.clamped_correlations - np.outer(self.clamped_means,self.clamped_means)
-        # C -= np.diag(C)
-        # C += np.diag(1-self.clamped_means**2)
-        #print(np.linalg.eig(C)[0])
-        # C += 0.00001*np.identity(self.N)
-        test = np.outer(self.clamped_means,self.clamped_means)
-        self.weights = -np.linalg.inv(self.C+0.00001*np.identity(self.N))+np.diag(1/(1-(self.clamped_means**2)))
+        self.weights = -np.linalg.inv(self.C) +np.diag(1/(1-(self.clamped_means**2)))
         self.thetas = np.arctanh(self.clamped_means) - np.dot(self.weights,self.clamped_means)
 
     def update_weights(self):
@@ -131,31 +125,40 @@ else:
     for i in range(10):
         machines.append(Boltzmann_machine(data_splits[i][:,0].size, data_splits[i][0,:].size,0.01,data_splits[i]))
 
-    machines[0].mean_field()
+        machines[i].mean_field()
     # print(np.unique(machines[0].weights))
-    machines[0].calculate_free_energy()
+        machines[i].calculate_free_energy()
     # print(machines[0].free_energy)
-
 
     def classify_sample(test,label):
         score = -np.inf
         digit = -1
         for i,machine in enumerate(machines):
-            machine.mean_field()
-            machine.calculate_free_energy()
             new_score = (1/2*(np.dot(np.dot(machine.weights,test), test)+np.dot(machine.thetas,test)))
-            new_score += machine.free_energy
-            # print(machine.free_energy)
+            #new_score += machine.free_energy
+            print(machine.free_energy)
             print(new_score)
             if new_score > score:
                 score = new_score
                 digit = i
+
         print(digit)
         print(label)
+        if digit == label:
+            return 1
+        else:
+            return 0
 
-    #print(test[0])
-    for k in range(10):
-        classify_sample(test[k],test_labels[k])
+
+
+    i = 0
+    for k in range(1):
+        i+=classify_sample(test[k],test_labels[k])
+
+    print(i)
+    print(test[:,1].size)
+    print(i/test[:,1].size)
+
 
     # plt.imshow(machines[1].clamped_correlations)
     # plt.imshow(np.reshape(test[3],(28,28)))
