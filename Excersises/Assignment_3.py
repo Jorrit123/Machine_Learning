@@ -19,8 +19,8 @@ test_labels = np.loadtxt('lasso_data\data1_output_val')
 #Generating corrolated data
 n = 3
 p = 10 # train data size
-#w = [2, 3, 0] # example 1a
-w = [-2, 3, 0] # example 1b
+w = [2, 3, 0] # example 1a
+#w = [-2, 3, 0] # example 1b
 sigma = 1
 x=np.zeros((n,p))
 x[:2,:]=np.random.normal(0,1,(2,p))
@@ -94,41 +94,74 @@ class Lasso():
 
 if __name__ == '__main__':
 
-    cross_validating = False
-    if not cross_validating:
-        weights = []
-        gammas = np.logspace(-5,2,100)
-        for i in gammas:
-            LassoObj = Lasso(train_data,train_labels,test_data,test_labels,i)
-            for iter in range(100):
+
+    if corrolated:
+
+        norms = []
+        steps = np.arange(100,0,-0.1)
+        bs = []
+            # norms.append(np.sum(np.abs(w)))
+
+        for s in steps:
+            LassoObj = Lasso(train_data,train_labels,test_data,test_labels,s)
+            for iter in range(50):
                 LassoObj.iteration()
-            weights.append(LassoObj.weights.flatten())
-        weights = np.array(weights).T
-
-        for weight in weights:
-            plt.plot(gammas,weight)
-        plt.xscale('log')
-        plt.xlabel("gamma")
-        plt.show()
-
-
-    else:
-        gamma = []
-        errors = []
-        gammas = np.logspace(-5, 1, 100)
-        for g in gammas:
-            LassoStep = Lasso(train_data, train_labels, test_data, test_labels, g)
-            error = LassoStep.cross_validate(5)
-            if error < 100:
-                gamma.append(g)
-                errors.append(error)
-            # print(g, ": ", error)
-        index = np.argmin(np.array(errors))
-        print(gamma[index],index)
+            norm = np.sum(np.abs(LassoObj.weights.flatten()))
+            if norm <= 5:
+                norms.append(norm)
+                bs.append(LassoObj.weights.flatten())
+        bs = np.array(bs).T
         fig = plt.figure()
         ax1 = fig.add_subplot(111)
 
-        ax1.plot(gamma, errors, color='black', label='gamma')
-        plt.xscale('log')
+        colors = ['blue','green','red']
+        for i in range(len(bs)):
+            plt.plot(norms,bs[i],color=colors[i], label='b'+str(i+1))
+        plt.xlabel("||b||1")
+        plt.ylabel("bi")
         plt.legend()
         plt.show()
+        print("test")
+
+    else:
+
+
+        cross_validating = False
+        if not cross_validating:
+            weights = []
+            gammas = np.logspace(-5,2,100)
+            for i in gammas:
+                LassoObj = Lasso(train_data,train_labels,test_data,test_labels,i)
+                for iter in range(100):
+                    LassoObj.iteration()
+                weights.append(LassoObj.weights.flatten())
+            weights = np.array(weights).T
+
+            for weight in weights:
+                plt.plot(gammas,weight)
+            plt.xscale('log')
+            plt.xlabel("gamma")
+            plt.ylabel("weights")
+            plt.show()
+
+
+        else:
+            gamma = []
+            errors = []
+            gammas = np.logspace(-5, 1, 100)
+            for g in gammas:
+                LassoStep = Lasso(train_data, train_labels, test_data, test_labels, g)
+                error = LassoStep.cross_validate(5)
+                if error < 100:
+                    gamma.append(g)
+                    errors.append(error)
+                # print(g, ": ", error)
+            index = np.argmin(np.array(errors))
+            print(gamma[index],index)
+            fig = plt.figure()
+            ax1 = fig.add_subplot(111)
+
+            ax1.plot(gamma, errors, color='black', label='gamma')
+            plt.xscale('log')
+            plt.legend()
+            plt.show()
